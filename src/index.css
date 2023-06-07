@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .carousel .slide .legend {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  margin-left: -45%;
+  width: 90%;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+} */
