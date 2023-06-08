@@ -1,5 +1,5 @@
 <img
-  src="/src/assets/parallax/learn-a-new-language-flags.jpg"
+  src="/src/assets/readme/readme.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
