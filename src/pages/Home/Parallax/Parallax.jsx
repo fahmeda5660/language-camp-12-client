@@ -1,16 +1,23 @@
 import { FaAngleRight } from "react-icons/fa";
-// import parallaxImg from "../../../assets/error/circle-pattern-bg.jpg";
+import { motion } from "framer-motion";
 import parallaxImg1 from "../../../assets/parallax/learn-language-resources.jpg";
-import './Parallax.css';
+import "./Parallax.css";
 const Parallax = () => {
   return (
-    <div className="featured-item bg-fixed text-white my-20 pb-20 pt-12 px-8" >
-            <div className="md:flex justify-center items-center gap-4">
-                <div>
-                    <img className="w-full md:w-11/12 md:h-96 rounded-lg" src={parallaxImg1} alt="" />
-                </div>
-                <div className="mt-[20px] md:mt-0 lg:mt-0">
-          
+    <div className="featured-item bg-fixed text-white my-20 pb-20 pt-12 px-8">
+      <div className="md:flex justify-center items-center gap-4">
+        <div>
+          {/* <img className="w-full md:w-11/12 md:h-96 rounded-lg" src={parallaxImg1} alt="" /> */}
+          <motion.img
+            src={parallaxImg1}
+            alt="Animated Image"
+            className="w-full md:w-11/12 md:h-96 rounded-lg"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+          />
+        </div>
+        <div className="mt-[20px] md:mt-0 lg:mt-0">
           <div className="join join-vertical w-full text-black">
             <div className="collapse collapse-arrow join-item border border-base-300">
               <input type="radio" name="my-accordion-4" checked="checked" />
@@ -61,14 +68,16 @@ const Parallax = () => {
                   <li>Children grow fast. </li>
                   <li>Each summer marks new milestones.</li>
                   <li> Learning new things.</li>
-                  <li>Becoming more consolidated and independent human beings.</li>
+                  <li>
+                    Becoming more consolidated and independent human beings.
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-            </div>
-        </div>
+      </div>
+    </div>
   );
 };
 

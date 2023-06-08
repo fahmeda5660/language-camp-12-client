@@ -1,21 +1,24 @@
-import { Link } from "react-router-dom";
 import ActiveLink from "../../../ActiveLink/ActiveLink";
 import { useEffect, useState } from "react";
+import { motion, useScroll } from "framer-motion";
 
 const NavBar = () => {
-    const [theme, setTheme]=useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
-    useEffect(()=>{
-        localStorage.setItem("theme",theme);
-        const localTheme = localStorage.getItem("theme");
-        document.querySelector("html").setAttribute("data-theme", localTheme)
-    },[theme])
-    const handleToggle = (e)=>{
-        if(e.target.checked){
-            setTheme("dark")
-        }else{
-            setTheme("light")
-        }
+    const { scrollYProgress } = useScroll();
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
     }
+  };
   // const { user, logOut } = useContext(AuthContext);
 
   // const handleLogOut = () => {
@@ -46,6 +49,18 @@ const NavBar = () => {
 
   return (
     <>
+        <motion.div style={{ 
+        scaleX: scrollYProgress,
+        position:"fixed",
+        top:0,
+        right:0,
+        left:0,
+        height:4,
+        background:"orange",
+        transformOrigin:"0%",
+        zIndex:999
+        }}>
+      </motion.div>
       <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white">
         <div className="navbar-start">
           <div className="dropdown">
@@ -80,7 +95,11 @@ const NavBar = () => {
         <div className="navbar-end">
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
-            <input onChange={handleToggle} checked={theme==="light" ? false : true} type="checkbox" />
+            <input
+              onChange={handleToggle}
+              checked={theme === "light" ? false : true}
+              type="checkbox"
+            />
 
             {/* sun icon */}
             <svg
