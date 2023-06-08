@@ -1,4 +1,5 @@
 import bgImg from "../../../assets/error/404.svg";
+import oops from "../../../assets/error/oops.png";
 import { motion } from "framer-motion";
 import { Link, useRouteError } from "react-router-dom";
 
@@ -24,7 +25,7 @@ const Error = () => {
         transition={{ duration: 1 }}
         className="text-black font-extrabold text-[64px]"
       >
-        Oops!
+        <img className="w-48 h-48" src={oops} alt="" />
       </motion.div>
         <div className="max-w-md text-center">
           {/* <img src={errorImg} alt="" /> */}
