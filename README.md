@@ -15,6 +15,6 @@
 **Used Technoloies**
 * React.js, TailwindCSS, daisyUI, ExpressJS, Firebase Authentication, MongoDB, JSON Web Token, tanstack query, Axios,React Hook form
 *** 
-1. Live Link: [Netlify](https://curious-world-730ca.web.app "Netlify Site")
+1. Live Link: [Firebase](https://language-camps.web.app "Firebase Site")
 2. Git Client Link: [Github](https://github.com/programming-hero-web-course1/b712-summer-camp-client-side-fahmeda5660 "Github Client Code")
 3. Git Server Link: [Github](https://github.com/programming-hero-web-course1/b7a12-summer-camp-server_side-fahmeda5660 "Github Server Code")
