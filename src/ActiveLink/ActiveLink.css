@@ -1,0 +1,10 @@
+.active{
+   color: blueviolet;
+   padding: 5px 8px;
+   border-radius: 5px;
+}
+.header a{
+   margin-left: 20px;
+   font-size: 22px;
+   font-weight: 600;
+}
