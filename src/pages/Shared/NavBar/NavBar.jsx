@@ -80,7 +80,7 @@ const NavBar = () => {
         <div className="navbar-end">
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
-            <input onClick={handleToggle} type="checkbox" />
+            <input onChange={handleToggle} checked={theme==="light" ? false : true} type="checkbox" />
 
             {/* sun icon */}
             <svg
