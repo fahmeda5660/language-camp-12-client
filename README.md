@@ -1,8 +1,8 @@
 <img
-  src="/src/assets/footer/foot.png"
+  src="/src/assets/parallax/learn-a-new-language-flags.jpg"
   alt="Alt text"
   title="Optional title"
-  style="display: inline-block; margin: 0 auto; max-width: 30px">
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
 ### Vasha Shikhon Ghor
 *** 
 **Vasha Shikhon Ghor**
