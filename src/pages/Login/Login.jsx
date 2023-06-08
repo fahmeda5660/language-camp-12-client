@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+// import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+// import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2'
-import SocialLogin from '../Shared/SocialLogin/SocialLogin';
+// import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
@@ -53,9 +53,9 @@ const Login = () => {
 
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>Bistro Boss | Login</title>
-            </Helmet>
+            </Helmet> */}
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col md:flex-row-reverse">
                     <div className="text-center md:w-1/2 lg:text-left">
@@ -81,7 +81,7 @@ const Login = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <LoadCanvasTemplate />
+                                    {/* <LoadCanvasTemplate /> */}
                                 </label>
                                 <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="type the captcha above" className="input input-bordered" />
 
@@ -94,7 +94,7 @@ const Login = () => {
                             <p><small>New Here? <Link to="/signup"><span className='text-blue-800'>Create an account</span></Link> </small></p>
                             </div>
                         </form>
-                        <SocialLogin></SocialLogin>
+                        {/* <SocialLogin></SocialLogin> */}
                     </div>
                 </div>
             </div>

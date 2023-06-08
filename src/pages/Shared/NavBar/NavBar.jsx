@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import ActiveLink from "../../../ActiveLink/ActiveLink";
 
 
@@ -40,7 +41,9 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Get started</a>
+                <Link to="/signup">
+                <button>Sign Up</button>
+              </Link>
                 </div>
             </div>
         </>

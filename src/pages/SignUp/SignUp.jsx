@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
-import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import { AuthContext } from "../../providers/AuthProvider";
+// import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
 
@@ -51,9 +51,9 @@ const SignUp = () => {
 
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>Bistro Boss | Sign Up</title>
-            </Helmet>
+            </Helmet> */}
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
@@ -106,7 +106,7 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p><small>Already have an account <Link to="/login">Login</Link></small></p>
-                        <SocialLogin></SocialLogin>
+                        {/* <SocialLogin></SocialLogin> */}
                     </div>
                 </div>
             </div>
