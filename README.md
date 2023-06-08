@@ -1,3 +1,8 @@
+<img
+  src="/src/assets/footer/foot.png"
+  alt="Alt text"
+  title="Optional title"
+  style="display: inline-block; margin: 0 auto; max-width: 30px">
 ### Vasha Shikhon Ghor
 *** 
 **Vasha Shikhon Ghor**
