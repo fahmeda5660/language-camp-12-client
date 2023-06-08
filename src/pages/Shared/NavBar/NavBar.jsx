@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import ActiveLink from "../../../ActiveLink/ActiveLink";
 
 
 const NavBar = () => {
@@ -13,11 +13,11 @@ const NavBar = () => {
     // }
 
     const navOptions = <>
-         <li><Link to="/">Home</Link></li>
-        <li><Link to="/menu">Instructors</Link></li>
-        <li><Link to="/order/salad">Classes</Link></li>
-        <li><Link to="/order/salad">Dashboard</Link></li>
-        <li><Link to="/order/salad">User profile</Link></li>
+        <li><ActiveLink to="/">Home</ActiveLink></li>
+        <li><ActiveLink to="/menu">Instructors</ActiveLink></li>
+        <li><ActiveLink to="/order/salad">Classes</ActiveLink></li>
+        <li><ActiveLink to="/order/salad">Dashboard</ActiveLink></li>
+        <li><ActiveLink to="/order/salad">User profile</ActiveLink></li>
     </>
 
     return (

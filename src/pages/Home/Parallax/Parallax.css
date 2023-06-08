@@ -1,3 +1,7 @@
 .featured-item{
-    background-image: url('../../../assets/parallax/lang.png');
+    background-image: url('../../../assets/error/circle-pattern-bg.jpg');
+}
+.border-base-300 {
+    --tw-border-opacity: 1;
+    border-color: rgb(0, 0, 0);
 }
