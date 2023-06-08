@@ -1,6 +1,5 @@
-.active{
-   color: black;
-   background: #fff;
+a.active{
+   color: orange;
    padding: 8px 8px;
    border-radius: 5px;
 }

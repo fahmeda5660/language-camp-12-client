@@ -2,6 +2,7 @@ import ActiveLink from "../../../ActiveLink/ActiveLink";
 import { useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 
+
 const NavBar = () => {
     const { scrollYProgress } = useScroll();
   const [theme, setTheme] = useState(
@@ -42,7 +43,7 @@ const NavBar = () => {
         <ActiveLink to="/order/salad">Dashboard</ActiveLink>
       </li>
       <li>
-        <ActiveLink to="/login">Login</ActiveLink>
+        <ActiveLink to="/signup">Sign Up</ActiveLink>
       </li>
     </>
   );
@@ -61,7 +62,7 @@ const NavBar = () => {
         zIndex:999
         }}>
       </motion.div>
-      <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white">
+      <div className="navbar fixed z-10  max-w-screen-xl bg-black text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">

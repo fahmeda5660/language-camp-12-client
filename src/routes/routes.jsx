@@ -18,7 +18,10 @@ import SignUp from "../pages/SignUp/SignUp";
             path: '/',
             element: <Home></Home>
         }, 
-
+        {
+            path: '/login',
+            element: <Login></Login>
+        }, 
         {
             path: '/signup',
             element: <SignUp></SignUp>
