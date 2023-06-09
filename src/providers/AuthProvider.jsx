@@ -8,7 +8,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [reload, setReload] = useState(false);
+    // const [reload, setReload] = useState(false);
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -16,10 +16,9 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
-    const profileUpdate = (name, photo, createdUser) => {
-        return updateProfile(createdUser, {
+    const profileUpdate = (name, photo ) => {
+        return updateProfile(auth.createUser, {
             displayName: name, photoURL: photo,
-
         })
     }
     const signIn = (email, password) => {
@@ -46,22 +45,10 @@ const AuthProvider = ({ children }) => {
         }
     }, []);
 
-    
-    // useEffect(() => {
-    //     const connection = onAuthStateChanged(auth, (user) => {
-    //         setLoading(false);
-    //         setUser(user);
-    //     });
-    //     return () => {
-    //         return connection();
-    //     };
-    // }, [reload]);
-
 
     const authInfo = {
         user,
         loading,
-        reload,
         createUser,
         profileUpdate,
         signIn,

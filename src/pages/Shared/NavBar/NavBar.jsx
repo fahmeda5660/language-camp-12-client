@@ -1,6 +1,7 @@
 import ActiveLink from "../../../ActiveLink/ActiveLink";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 
 const NavBar = () => {
@@ -20,13 +21,13 @@ const NavBar = () => {
       setTheme("light");
     }
   };
-  // const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
-  // const handleLogOut = () => {
-  //     logOut()
-  //         .then(() => { })
-  //         .catch(error => console.log(error));
-  // }
+  const handleLogOut = () => {
+      logOut()
+          .then(() => { })
+          .catch(error => console.log(error));
+  }
 
   const navOptions = (
     <>
@@ -43,8 +44,17 @@ const NavBar = () => {
         <ActiveLink to="/order/salad">Dashboard</ActiveLink>
       </li>
       <li>
-        <ActiveLink to="/signup">Sign Up</ActiveLink>
+        <ActiveLink to="/secret">Secret</ActiveLink>
       </li>
+      
+        {
+            user ? <>
+                <li><button onClick={handleLogOut} className="">Log Out</button></li>
+            </> : <>
+                <li><ActiveLink className="" to="/login">Login</ActiveLink></li>
+            </>
+        }
+       
     </>
   );
 
@@ -94,6 +104,19 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1 text-lg">{navOptions}</ul>
         </div>
         <div className="navbar-end">
+        {
+              user && (
+                <div className="tooltip tooltip-bottom text-white" data-tip={user.displayName}>
+                  <p>
+                    <img
+                      className="w-10 h-10 mr-3 rounded-full"
+                      src={user.photoURL}
+                      alt=""
+                    />
+                  </p>
+                </div>
+              )
+            }
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
             <input
