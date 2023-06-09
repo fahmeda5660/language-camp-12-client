@@ -1,4 +1,4 @@
-figure img{
+#popularClass figure img{
     clip-path: polygon(0 0, 100% 0, 100% 79%, 0 100%);
 
 }

@@ -4,6 +4,7 @@ import Marqueeing from "../Marqueeing/Marqueeing";
 import Parallax from "../Parallax/Parallax";
 import Rocket from "../Rocket/Rocket";
 import PopularClasses from "../PopularClasses/PopularClasses";
+import PopularInstructor from "../PopularInstructor/PopularInstructor";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       </Helmet>
       <Banner></Banner>
       <PopularClasses></PopularClasses>
+      <PopularInstructor></PopularInstructor>
       <Parallax></Parallax>
       <Rocket></Rocket>
       <Marqueeing></Marqueeing>

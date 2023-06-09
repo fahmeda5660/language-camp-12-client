@@ -38,7 +38,7 @@ const NavBar = () => {
         <ActiveLink to="/menu">Instructors</ActiveLink>
       </li>
       <li>
-        <ActiveLink to="/order/salad">Classes</ActiveLink>
+        <ActiveLink to="/classes">Classes</ActiveLink>
       </li>
       <li>
         <ActiveLink to="/order/salad">Dashboard</ActiveLink>

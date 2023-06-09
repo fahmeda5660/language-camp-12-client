@@ -12,13 +12,15 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const [pwMismatch, setPwMismatch] = useState(false);
-  const { createUser, profileUpdate, logOut, handleGoogleSignIn } = useContext(AuthContext);
+  // const [disabled, setDisabled] = useState(true);
+  const { createUser, profileUpdate, handleGoogleSignIn, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
     if (data?.password !== data?.retypePassword) {
       setPwMismatch(true);
+      return
     } else {
       setPwMismatch(false);
     }
@@ -30,6 +32,7 @@ const SignUp = () => {
 
         profileUpdate(data.name, data.photoURL)
           .then(() => {
+            setUser({...loggedUser, displayName:data.name, photoURL:data.photoURL})
             console.log("User updated");
             Swal.fire({
               position: "top-end",
@@ -41,12 +44,8 @@ const SignUp = () => {
 
             // Display the updated name
             console.log("Updated name:", data.name);
-
-            logOut()
-              .then(() => {
-                navigate("/");
-              })
-              .catch((error) => console.log(error));
+            navigate("/");
+            
           })
           .catch((error) => console.log(error));
       });
@@ -122,7 +121,7 @@ const SignUp = () => {
               <input
                 type="password"
                 className="input input-bordered rounded-none w-full"
-                placeholder="Type password again"
+                placeholder="Retype Your Password"
                 {...register("retypePassword", { required: true })}
               />
               {pwMismatch ? (
@@ -139,7 +138,7 @@ const SignUp = () => {
               {errors.photoURL && (
                 <span className="text-rose-600">Photo URL is required</span>
               )}
-              <input
+              <input disabled={false}
                 className="hover:cursor-pointer bg-primary text-white font-semibold py-2"
                 type="submit"
                 value="Register"

@@ -24,7 +24,7 @@ const Parallax = () => {
             />
           </div>
           <div className="mt-[20px] md:mt-0 lg:mt-0">
-            <div className="join join-vertical w-full text-black">
+            <div className="join join-vertical w-full text-black bg-white">
               <div className="collapse collapse-arrow join-item border border-black">
                 <input type="radio" name="my-accordion-4" checked="checked" />
                 <div className="collapse-title text-xl font-medium">
