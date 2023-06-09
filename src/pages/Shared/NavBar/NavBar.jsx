@@ -72,7 +72,7 @@ const NavBar = () => {
         zIndex:999
         }}>
       </motion.div>
-      <div className="navbar fixed z-10  max-w-screen-xl bg-black text-white">
+      <div className="navbar fixed z-10  max-w-screen-xl bg-black text-white px-8">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -98,7 +98,7 @@ const NavBar = () => {
               {navOptions}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">Vasha ShikhonGhor</a>
+          <a className="normal-case text-xl">Vasha ShikhonGhor</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-lg">{navOptions}</ul>
@@ -108,8 +108,9 @@ const NavBar = () => {
               user && (
                 <div className="tooltip tooltip-bottom text-white" data-tip={user.displayName}>
                   <p>
-                    <img
+                    <img 
                       className="w-10 h-10 mr-3 rounded-full"
+                      referrerPolicy="no-referrer"
                       src={user.photoURL}
                       alt=""
                     />

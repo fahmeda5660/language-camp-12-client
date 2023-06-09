@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -41,9 +41,9 @@ const Login = () => {
   };
   return (
     <>
-      {/* <Helmet>
-                <title>Bistro Boss | Login</title>
-            </Helmet> */}
+      <Helmet>
+        <title>VashaShikhon | Login</title>
+      </Helmet>
       <div className="bg-gradient-to-r from-orange-200 pt-16">
         <div className="container text-center pt-12 pb-20">
           <div className="bg-white shadow-lg border max-w-lg mx-auto pt-9 pb-12 px-12">
@@ -67,7 +67,8 @@ const Login = () => {
                   placeholder="Password"
                   {...register("password", { required: true })}
                 />
-                <FontAwesomeIcon className="absolute right-2 top-[16px]"
+                <FontAwesomeIcon
+                  className="absolute right-2 top-[16px]"
                   icon={passwordVisible ? faEye : faEyeSlash}
                   onClick={togglePasswordVisibility}
                 />

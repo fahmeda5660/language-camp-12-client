@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-// import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -15,7 +15,7 @@ const SignUp = () => {
   const { createUser, profileUpdate, logOut, handleGoogleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const onSubmit =  (data) => {
+  const onSubmit = (data) => {
     console.log(data);
     if (data?.password !== data?.retypePassword) {
       setPwMismatch(true);
@@ -23,40 +23,40 @@ const SignUp = () => {
       setPwMismatch(false);
     }
     createUser(data.email, data.password)
-    .then((result) => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
-    //   console.log(data.name, data.photoURL);
-  
-      profileUpdate(data.name, data.photoURL)
-        .then(() => {
-          console.log("User updated");
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "User login successful.",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          
-          // Display the updated name
-          console.log("Updated name:", data.name);
-          
-          logOut()
-            .then(() => {
-              navigate("/");
-            })
-            .catch((error) => console.log(error));
-        })
-        .catch((error) => console.log(error));
-    });
-  }  
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        //   console.log(data.name, data.photoURL);
+
+        profileUpdate(data.name, data.photoURL)
+          .then(() => {
+            console.log("User updated");
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "User login successful.",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+
+            // Display the updated name
+            console.log("Updated name:", data.name);
+
+            logOut()
+              .then(() => {
+                navigate("/");
+              })
+              .catch((error) => console.log(error));
+          })
+          .catch((error) => console.log(error));
+      });
+  }
 
   return (
     <>
-      {/* <Helmet>
-                <title>Language | Sign Up</title>
-            </Helmet> */}
+      <Helmet>
+        <title>VashaShikhon | Sign Up</title>
+      </Helmet>
       <div className="bg-gradient-to-r from-orange-200 pt-16">
         <div className="container text-center pt-12 pb-20">
           <div className="border max-w-lg mx-auto pt-9 pb-12 px-12 shadow-lg bg-white">

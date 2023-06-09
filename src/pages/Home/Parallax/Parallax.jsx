@@ -7,10 +7,10 @@ const Parallax = () => {
   return (
     <div>
       <div className="featured-item bg-fixed text-white my-20 pb-20 pt-12 px-8">
-      <SectionTitle
-        subHeading={"Your Frequently Ask Questions"}
-        heading={"FAQ"}
-      ></SectionTitle>
+        <SectionTitle
+          heading={"FAQ"}
+          subHeading={"Your Frequently Ask Questions"}
+        ></SectionTitle>
         <div className="md:flex justify-center items-center gap-4">
           <div>
             {/* <img className="w-full md:w-11/12 md:h-96 rounded-lg" src={parallaxImg1} alt="" /> */}
@@ -25,7 +25,7 @@ const Parallax = () => {
           </div>
           <div className="mt-[20px] md:mt-0 lg:mt-0">
             <div className="join join-vertical w-full text-black">
-              <div className="collapse collapse-arrow join-item border border-base-300">
+              <div className="collapse collapse-arrow join-item border border-black">
                 <input type="radio" name="my-accordion-4" checked="checked" />
                 <div className="collapse-title text-xl font-medium">
                   What is a typical day like at the summer camps?
@@ -55,7 +55,7 @@ const Parallax = () => {
                   </ul>
                 </div>
               </div>
-              <div className="collapse collapse-arrow join-item border border-base-300">
+              <div className="collapse collapse-arrow join-item border border-black">
                 <input type="radio" name="my-accordion-4" />
                 <div className="collapse-title text-xl font-medium">
                   Which languages can I learn during a summer camp?
@@ -64,7 +64,7 @@ const Parallax = () => {
                   <p>English, German, French, Chineese.</p>
                 </div>
               </div>
-              <div className="collapse collapse-arrow join-item border border-base-300">
+              <div className="collapse collapse-arrow join-item border border-black">
                 <input type="radio" name="my-accordion-4" />
                 <div className="collapse-title text-xl font-medium">
                   Importance of Summer Camp?
