@@ -41,10 +41,10 @@ const NavBar = () => {
         <ActiveLink to="/classes">Classes</ActiveLink>
       </li>
       <li>
-        <ActiveLink to="/order/salad">Dashboard</ActiveLink>
+        <ActiveLink to="/dashboard">Dashboard</ActiveLink>
       </li>
       <li>
-        <ActiveLink to="/secret">Secret</ActiveLink>
+        <ActiveLink to="/dashboard/mycart">My Cart</ActiveLink>
       </li>
       
         {
@@ -67,7 +67,7 @@ const NavBar = () => {
         right:0,
         left:0,
         height:4,
-        background:"orange",
+        background:"#2094f3",
         transformOrigin:"0%",
         zIndex:999
         }}>

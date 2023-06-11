@@ -1,26 +1,25 @@
 import { useForm } from "react-hook-form";
-import SectionTitle from "../../components/SectionTitle/SectionTitle";
-import "./Classes.css"
+import { AuthContext } from "../../../providers/AuthProvider";
 import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
-const Classes = () => {
-  const { register, handleSubmit } = useForm();
-  const { user } = useContext(AuthContext);
-  const onSubmit = () => {
-    // const formData = new FormData();
-    // formData.append("image", data.image[0]);
-    // fetch(img_hosting_url, {
-    //     method: 'POST',
-    //     body: formData
-    // })
-  };
-  return (
-    <div id="classInput" className="w-full px-8 pt-20 pb-10 ">
+const AddClasses = () => {
+    const { register, handleSubmit } = useForm();
+    const { user } = useContext(AuthContext);
+    const onSubmit = () => {
+      // const formData = new FormData();
+      // formData.append("image", data.image[0]);
+      // fetch(img_hosting_url, {
+      //     method: 'POST',
+      //     body: formData
+      // })
+    };
+    return (
+        <div id="classInput" className="w-full px-8 pt-20 pb-10 -mt-16">
       <SectionTitle
-        heading={"Class"}
-        heading1={""}
-        subHeading={"Let's Try"}
+        heading={"Add"}
+        heading1={"Class"}
+        subHeading={"Instructor Job"}
       ></SectionTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="md:flex lg:flex gap-4">
@@ -112,8 +111,8 @@ const Classes = () => {
 
         </div>
       </form>
-    </div>
-  );
+    </div> 
+    );
 };
 
-export default Classes;
+export default AddClasses;

@@ -11,20 +11,9 @@
 .icon-size {
   @apply w-10 h-10 text-white
 }
-.carousel .control-dots .dot {
-  opacity: .3;
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.9);
-  background: rgb(249, 158, 48);
-  width: 36px;
-  height: 4px;
-  cursor: pointer;
-  display: inline-block;
-  margin: 0 8px;
-  border-radius: unset;
+.drawer-side a.active {
+  color: white;
 }
-.carousel .control-next.control-arrow:before {
-  border-left: 8px solid orange;
-}
-.carousel .control-prev.control-arrow:before {
-  border-right: 8px solid orange;
+.drawer-side a {
+  background-color: transparent;
 }

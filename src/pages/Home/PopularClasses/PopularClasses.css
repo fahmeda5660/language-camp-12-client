@@ -32,7 +32,7 @@
   .btn4:after {
     left: -100%;
     clip-path: polygon(10% 0, 70% 0, 90% 100%, 30% 100%);
-    background-color: orange;
+    background-color: #2094f3;
     transition: all 500ms ease;
   }
   

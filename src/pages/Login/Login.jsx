@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const {
@@ -14,7 +15,7 @@ const Login = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { signIn, handleGoogleSignIn } = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -44,7 +45,7 @@ const Login = () => {
       <Helmet>
         <title>VashaShikhon | Login</title>
       </Helmet>
-      <div className="bg-gradient-to-r from-orange-200 pt-16">
+      <div className="bg-gradient-to-r from-blue-200 pt-16">
         <div className="container text-center pt-12 pb-20">
           <div className="bg-white shadow-lg border max-w-lg mx-auto pt-9 pb-12 px-12">
             <h1 className="text-black text-4xl font-bold mb-9">Please Login</h1>
@@ -98,7 +99,7 @@ const Login = () => {
                 Please Register
               </Link>
             </p>
-            <div className="divider mt-7">OR</div>
+            {/* <div className="divider mt-7">OR</div>
             <div>
               <button
                 onClick={() => handleGoogleSignIn()}
@@ -132,7 +133,8 @@ const Login = () => {
                 </span>
                 Sign in with google
               </button>
-            </div>
+            </div> */}
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
