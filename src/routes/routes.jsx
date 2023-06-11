@@ -1,5 +1,5 @@
 
-import { createBrowserRouter, Outlet } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
 import Error from "../pages/Home/Error/Error";
@@ -13,6 +13,7 @@ import MyCart from "../pages/Dashboard/MyCart/MyCart";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AddClasses from "../pages/Dashboard/AddClasses/AddClasses";
 import AdminRoute from "./AdminRoute";
+import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: "addclasses",
         element: <AddClasses></AddClasses>,
+      },
+      {
+        path: "manageclasses",
+        element: <ManageClasses></ManageClasses>,
       },
     ],
   },

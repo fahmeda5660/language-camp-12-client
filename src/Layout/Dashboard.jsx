@@ -42,7 +42,7 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard">
+            <NavLink to="/dashboard/manageclasses">
               <FaCalendarAlt></FaCalendarAlt> Manage Classes
             </NavLink>
           </li>
