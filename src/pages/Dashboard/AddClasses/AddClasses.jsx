@@ -4,6 +4,7 @@ import { useContext } from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import "./AddClasses"
 const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 const AddClasses = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -14,6 +15,7 @@ const AddClasses = () => {
   const { user } = useContext(AuthContext);
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
   const onSubmit = (data) => {
+    console.log(data);
     const formData = new FormData();
     formData.append("image", data.image[0]);
 
@@ -25,11 +27,12 @@ const AddClasses = () => {
       .then((imgResponse) => {
         if (imgResponse.success) {
           const imgURL = imgResponse.data.display_url;
-          const { className, price, instructor, seats} = data;
+          const { className, price, instructor, email, seats} = data;
           const newClass = {
             className,
             price: parseFloat(price),
             instructor,
+            email,
             seats,
             image: imgURL,
             status: "pending"

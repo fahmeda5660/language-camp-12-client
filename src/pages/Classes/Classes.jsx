@@ -3,115 +3,55 @@ import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import "./Classes.css"
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import PopularButton from "../../components/PopularButton/PopularButton";
 
 const Classes = () => {
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
-  const onSubmit = () => {
-    // const formData = new FormData();
-    // formData.append("image", data.image[0]);
-    // fetch(img_hosting_url, {
-    //     method: 'POST',
-    //     body: formData
-    // })
-  };
+  const [axiosSecure] = useAxiosSecure();
+  const { data: clesses = [], refetch } = useQuery(['classes'], async () => {
+      const res = await axiosSecure.get('/AllClasses')
+      return res.data;
+  })
   return (
     <div id="classInput" className="w-full px-8 pt-20 pb-10 ">
       <SectionTitle
-        heading={"Class"}
-        heading1={""}
+        heading={"All"}
+        heading1={"Classes"}
         subHeading={"Let's Try"}
       ></SectionTitle>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="md:flex lg:flex gap-4">
-          <div className="form-control w-full mb-4">
-            <label className="label">
-              <span className="label-text font-semibold">Class Name <span className="text-xl text-info">*</span></span>
-            </label>
-            <input
-              type="text" defaultValue="English 101"
-              placeholder="Class Name"
-              {...register("class", { required: true, maxLength: 120 })}
-              className="input input-bordered w-full "
-            />
-          </div>
-          <div className="form-control w-full mb-4">
-          <label className="label">
-            <span className="label-text">Upload Class Photo<span className="text-xl text-info">*</span></span>
-          </label>
-          <input
-            type="file" 
-            {...register("image", { required: true })}
-            className="file-input file-input-bordered file-input-info w-full rounded-none"
-          />
-        </div>
-        </div>
-        <div className="md:flex lg:flex gap-4">
-          
-          <div className="form-control w-full mb-4">
-            <label className="label">
-              <span className="label-text font-semibold">Instructor Name<span className="text-xl text-info">*</span></span>
-            </label>
-            <input
-              type="text" defaultValue={user?.displayName}
-              placeholder="Instructor Name"
-              {...register("instructor", { required: true, maxLength: 120 })}
-              className="input input-bordered w-full "
-            />
-          </div>
-          <div className="form-control w-full mb-4">
-            <label className="label">
-              <span className="label-text font-semibold">Instructor Email <span className="text-xl text-info">*</span></span>
-            </label>
-            <input
-              type="email" defaultValue={user?.email}
-              placeholder="Instructor Email"
-              {...register("email", { required: true, maxLength: 120 })}
-              className="input input-bordered w-full "
-            />
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+        {
+          clesses.map((singleclass, index) => 
+          <div className="md:col-span-4 lg:col-span-4 col-span-1">
+          <div className="card card-compact md:w-96 lg:w-96 w-full bg-base-100 shadow-xl">
+            <figure>
+              <img className="w-full h-50" src={singleclass.image} alt="Class Photo" />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title text-2xl">Name:{singleclass.className}</h2>
+              <p className="text-xl">Instructor Name:{singleclass.instructor}</p>
+              <p className="text-xl">Available seats:{singleclass.seats}</p>
+              <p className="text-xl">Price:{singleclass.price}</p>
+              <div className="card-actions justify-end">
+                {/* <button className="btnClass btn4 rounded-lg text-xl mt-2">
+                  Select Class{" "}
+                  <span className="ml-2">
+                    <FaArrowRight></FaArrowRight>
+                  </span>
+                </button> */}
+                <PopularButton buttonText={"Enroll Class"}></PopularButton>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div className="md:flex lg:flex gap-4">
-          <div className="form-control w-full">
-            <label className="label">
-              <span className="label-text font-semibold">Price<span className="text-xl text-info">*</span></span>
-            </label>
-            <input
-              type="number" defaultValue="1001"
-              {...register("price", { required: true })}
-              placeholder="Type here"
-              className="input input-bordered w-full "
-            />
-          </div>
-          <div className="form-control w-full">
-            <label className="label">
-              <span className="label-text font-semibold">Available Seats<span className="text-xl text-info">*</span></span>
-            </label>
-            <input
-              type="number" defaultValue="101"
-              {...register("seats", { required: true })}
-              placeholder="Type here"
-              className="input input-bordered w-full "
-            />
-          </div>
-        </div>
-
-        {/* <div className="form-control w-full my-4">
-          <label className="label">
-            <span className="label-text">Upload Class Photo<span className="text-xl text-info">*</span></span>
-          </label>
-          <input
-            type="file" 
-            {...register("image", { required: true })}
-            className="file-input file-input-bordered file-input-warning w-full rounded-none"
-          />
-        </div> */}
-        <div className="flex justify-center">
-        <input className="btn btn-xl mt-4 w-[20%] rounded-none hover:bg-info bg-info text-white hover:text-black" type="submit" value="Add Item" />
-
-        </div>
-      </form>
+          )
+        }
+        
+        
+      </div>
     </div>
   );
 };

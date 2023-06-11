@@ -2,7 +2,10 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import classimg from "../../../assets/parallax/learn-a-new-language-flags.jpg";
 import "./PopularClasses.css";
 import PopularButton from "../../../components/PopularButton/PopularButton";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 const PopularClasses = () => {
+
   return (
     <div id="popularClass" className="px-8 mb-20">
       <SectionTitle
