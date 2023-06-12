@@ -17,3 +17,10 @@
 .drawer-side a {
   background-color: transparent;
 }
+/* button, [type='button'], [type='reset'], [type='submit'] {
+  background-color: blue;
+  color: white;
+  padding: 5px 25px;
+  border-radius: 2px;
+  margin-top: 20px;
+} */

@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import { Link } from "react-router-dom";
 // import { useEffect } from "react";
 // import { useState } from "react";
 // import useAuth from "../../../hooks/useAuth";
@@ -66,9 +67,9 @@ const SelectedClasses = () => {
                 <td>{singleSelectedData.className}</td>
                 <td>{singleSelectedData.instructor}</td>
                 <td>{singleSelectedData.price}</td>
-                <td><button className="btn btn-xs bg-[#2094f3] text-white hover:text-black">
+                <td><Link to="/dashboard/payment"><button className="btn btn-xs bg-[#2094f3] text-white hover:text-black">
                   Pay
-                </button></td>
+                </button></Link></td>
                 <td><button className="btn btn-xs bg-[#2094f3] text-white hover:text-black">
                   Delete
                 </button></td>
