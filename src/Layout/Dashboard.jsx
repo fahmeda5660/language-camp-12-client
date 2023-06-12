@@ -10,12 +10,14 @@ import {
 } from "react-icons/fa";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
     //TODO Load data from the server to have dynamic
 //   const isAdmin = true;
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
+  const [cart]=useCart();
   return (
     <div className="drawer drawer-mobile lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -65,10 +67,11 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/addclasses">
                   <FaEdit></FaEdit> Add Classes
+                  {/* <div className="badge badge-secondary">+{cart?.length || 0}</div> */}
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageuser">
+                <NavLink to="/dashboard/myClass">
                 <FaCalendarAlt></FaCalendarAlt> My Classes
                 </NavLink>
               </li>
@@ -81,8 +84,9 @@ const Dashboard = () => {
               </li>
     
               <li>
-                <NavLink to="/dashboard">
+                <NavLink to="/dashboard/selectedclasses">
                   <FaCartPlus></FaCartPlus> Selected Classes
+                  <div className="badge badge-secondary">+{cart?.length || 0}</div>
                 </NavLink>
               </li>
               <li>

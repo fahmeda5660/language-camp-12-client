@@ -7,19 +7,33 @@ import axios from "axios";
 // import { useQuery } from "@tanstack/react-query";
 
 const ManageClasses = () => {
-  const [classes] = useClass();
+  const [classes, ,refetch] = useClass();
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
-
+    const handleDeny = (id)=>{
+        axios.patch(`http://localhost:5000/classes/admin/deny/${id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount) {
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${id.name} is an Denied Now!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+    }
   const handleApprove = (id) => {
     axios.patch(`http://localhost:5000/classes/admin/${id}`).then((res) => {
       console.log(res.data);
       if (res.data.modifiedCount) {
-        // refetch();
+        refetch();
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `${id.name} is an Admin Now!`,
+          title: `${id.name} is an Approved Now!`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -93,25 +107,43 @@ const ManageClasses = () => {
                       "Approved"
                     ) : (
                       <button
-                      disabled={singleClass.status == "approved" ||singleClass.status == "rejected"}
+                      disabled={singleClass.status == "approved" ||singleClass.status == "deny"}
                         onClick={() => handleApprove(singleClass._id)}
                         className="btn btn-xs bg-[#2094f3] text-white hover:text-black"
                       >
                         Approve
                       </button>
                     )}
+                    {user.role === "admin" ? (
+                      "Deny"
+                    ) : (
+                      <button
+                      disabled={singleClass.status == "approved" ||singleClass.status == "deny"}
+                        onClick={() => handleDeny(singleClass._id)}
+                        className="btn btn-xs bg-[#2094f3] text-white hover:text-black"
+                      >
+                        Deny
+                      </button>
+                    )}
 
-                    <button
+                    {/* <button
                     disabled={singleClass.status == "approved" ||singleClass.status == "rejected"}
-                      onClick={() => handleDelete(singleClass)}
+                      onClick={() => handleDeny(singleClass)}
                       className="btn btn-xs bg-[#2094f3] text-white hover:text-black"
                     >
                       Deny
-                    </button>
-                    
-                    <button className="btn btn-xs bg-[#2094f3] text-white hover:text-black">
+                    </button> */}
+                    {singleClass.status == "deny" || singleClass.status == "pending" ? (
+                      <button
+                        onClick={() => handleFeedback(singleClass._id)}
+                        className="btn btn-xs bg-[#2094f3] text-white hover:text-black"
+                      >
+                        feedback
+                      </button>
+                    ): ""}
+                    {/* <button className="btn btn-xs bg-[#2094f3] text-white hover:text-black">
                       feedback
-                    </button>
+                    </button> */}
                   </div>
                 </td>
                 <td><button

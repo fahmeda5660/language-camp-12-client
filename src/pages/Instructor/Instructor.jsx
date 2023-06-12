@@ -1,26 +1,24 @@
-
-import "./PopularInstructor.css"
-import PopularButton from "../../../components/PopularButton/PopularButton";
-import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import PopularButton from "../../components/PopularButton/PopularButton";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
-const PopularInstructor = () => {
+const Instructor = () => {
   const [axiosSecure] = useAxiosSecure();
-  const { data: popularInstructors = [] } = useQuery(['popularInstructors'], async () => {
-      const res = await axiosSecure.get("/popularInstructor")
-      console.log("popularInstructors",res.data);
-      return res.data; 
-  })
-    return (
-        <div id="popularInstructor" className="px-8 mb-20">
+  const { data: instructors = [] } = useQuery(["instructors"], async () => {
+    const res = await axiosSecure.get("/instructor");
+    console.log("instructors", res.data);
+    return res.data;
+  });
+  return (
+    <div id="popularInstructor" className="px-8 mb-20 pt-16">
       <SectionTitle
         heading={"Popular"}
         heading1={"Instructors"}
         subHeading={"Most Students Choice"}
       ></SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-      {popularInstructors?.map((instructor) => (
+        {instructors?.map((instructor) => (
           <div
             key={instructor._id}
             className="md:col-span-4 lg:col-span-4 col-span-1"
@@ -38,9 +36,7 @@ const PopularInstructor = () => {
                   <h2 className="card-title text-2xl">
                     Instructor Name: {instructor.instructor}
                   </h2>
-                  <p className="text-xl">Class: {instructor.className}</p>
-                  <p className="text-xl">Class: {instructor.price}</p>
-                  <p className="text-xl">Class: {instructor.seats}</p>
+                  <p className="text-xl">Email: {instructor.email}</p>
                   <div className="card-actions justify-end">
                     <PopularButton buttonText={"See Classes"}></PopularButton>
                   </div>
@@ -51,7 +47,7 @@ const PopularInstructor = () => {
         ))}
       </div>
     </div>
-    );
+  );
 };
 
-export default PopularInstructor;
+export default Instructor;

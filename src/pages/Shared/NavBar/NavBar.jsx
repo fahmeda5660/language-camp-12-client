@@ -35,16 +35,13 @@ const NavBar = () => {
         <ActiveLink to="/">Home</ActiveLink>
       </li>
       <li>
-        <ActiveLink to="/menu">Instructors</ActiveLink>
+        <ActiveLink to="/instructor">Instructors</ActiveLink>
       </li>
       <li>
         <ActiveLink to="/classes">Classes</ActiveLink>
       </li>
       <li>
         <ActiveLink to="/dashboard">Dashboard</ActiveLink>
-      </li>
-      <li>
-        <ActiveLink to="/dashboard/mycart">My Cart</ActiveLink>
       </li>
       
         {

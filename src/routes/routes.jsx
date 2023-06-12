@@ -9,11 +9,14 @@ import Secret from "../pages/Shared/Secret/Secret";
 import PrivateRoute from "./PrivateRoute";
 import Classes from "../pages/Classes/Classes";
 import Dashboard from "../Layout/Dashboard";
-import MyCart from "../pages/Dashboard/MyCart/MyCart";
+
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AddClasses from "../pages/Dashboard/AddClasses/AddClasses";
 import AdminRoute from "./AdminRoute";
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
+import SelectedClasses from "../pages/Dashboard/SelectedClasses/SelectedClasses";
+import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
+import Instructor from "../pages/Instructor/Instructor";
 
 export const router = createBrowserRouter([
   {
@@ -41,16 +44,20 @@ export const router = createBrowserRouter([
         path: "/secret",
         element: <PrivateRoute><Secret /></PrivateRoute>,
       },
+      {
+        path: "/instructor",
+        element: <Instructor></Instructor>,
+      },
     ],
   },
   {
     path: "dashboard",
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
-      {
-        path: "mycart",
-        element: <MyCart></MyCart>,
-      },
+      // {
+      //   path: "selectedclasses",
+      //   element: <SelectedClasses></SelectedClasses>,
+      // },
       {
         path: "allusers",
         element: <AdminRoute><AllUsers></AllUsers></AdminRoute>,
@@ -63,6 +70,16 @@ export const router = createBrowserRouter([
         path: "manageclasses",
         element: <ManageClasses></ManageClasses>,
       },
+      // Instructor
+      {
+        path: 'selectedclasses',
+        element: <SelectedClasses></SelectedClasses>
+    },
+    // Student
+      {
+        path: 'myClass',
+        element: <MyClasses></MyClasses>
+    },
     ],
   },
 ]);
