@@ -51,7 +51,8 @@ const Banner = () => {
                 LANGUAGE CAMPS
               </p>
               <p className=" text-white  px-[25%] font-bold text-xs md:text-2xl lg:text-2xl">
-              Make this summer exciting, enriching and productive for your kids, with our Summer Courses in Speaking
+                Make this summer exciting, enriching and productive for your
+                kids, with our Summer Courses in Speaking
               </p>
             </div>
           </div>
@@ -59,7 +60,7 @@ const Banner = () => {
       </div>
       <div>
         <div className="relative">
-        <div
+          <div
             style={{
               backgroundImage: `url(${img3})`,
               backgroundSize: "cover",
@@ -74,7 +75,8 @@ const Banner = () => {
                 LANGUAGE CAMPS
               </p>
               <p className=" text-white  px-[25%] font-bold text-xs md:text-2xl lg:text-2xl">
-              Research shows that people who are multilingual may be better at processing language and other analytical tasks.
+                Research shows that people who are multilingual may be better at
+                processing language and other analytical tasks.
               </p>
             </div>
           </div>
@@ -82,7 +84,7 @@ const Banner = () => {
       </div>
       <div>
         <div className="relative">
-        <div
+          <div
             style={{
               backgroundImage: `url(${img4})`,
               backgroundSize: "cover",
@@ -97,7 +99,8 @@ const Banner = () => {
                 LANGUAGE CAMPS
               </p>
               <p className=" text-white  px-[25%] font-bold text-xs md:text-2xl lg:text-2xl">
-              Language is one of the most important instruments of preserving heritage. 
+                Language is one of the most important instruments of preserving
+                heritage.
               </p>
             </div>
           </div>

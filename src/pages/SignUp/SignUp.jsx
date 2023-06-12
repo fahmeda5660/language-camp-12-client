@@ -15,8 +15,7 @@ const SignUp = () => {
   } = useForm();
   const [pwMismatch, setPwMismatch] = useState(false);
   // const [disabled, setDisabled] = useState(true);
-  const { createUser, profileUpdate, setUser } =
-    useContext(AuthContext);
+  const { createUser, profileUpdate, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
@@ -40,7 +39,12 @@ const SignUp = () => {
             photoURL: data.photoURL,
           });
           // console.log("User updated");
-          const saveUser = { name: data.name, email: data.email, image: data.photoURL, role: "student" }
+          const saveUser = {
+            name: data.name,
+            email: data.email,
+            image: data.photoURL,
+            role: "student",
+          };
           fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {
@@ -185,7 +189,7 @@ const SignUp = () => {
                 Please Login
               </Link>
             </p>
-                <SocialLogin></SocialLogin>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

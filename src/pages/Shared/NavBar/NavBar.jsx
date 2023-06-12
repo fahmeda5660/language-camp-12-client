@@ -2,10 +2,14 @@ import ActiveLink from "../../../ActiveLink/ActiveLink";
 import { useContext, useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import { AuthContext } from "../../../providers/AuthProvider";
-
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
-    const { scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -24,10 +28,10 @@ const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
-      logOut()
-          .then(() => { })
-          .catch(error => console.log(error));
-  }
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
 
   const navOptions = (
     <>
@@ -40,35 +44,65 @@ const NavBar = () => {
       <li>
         <ActiveLink to="/classes">Classes</ActiveLink>
       </li>
-      <li>
-        <ActiveLink to="/dashboard">Dashboard</ActiveLink>
-      </li>
-      
-        {
-            user ? <>
-                <li><button onClick={handleLogOut} className="">Log Out</button></li>
-            </> : <>
-                <li><ActiveLink className="" to="/login">Login</ActiveLink></li>
+      {isAdmin ? (
+        <>
+          <li>
+            <Link to="/dashboard/adminhome">Dashboard</Link>
+          </li>
+        </>
+      ) : (
+        <>
+          {isInstructor ? (
+            <>
+              <li>
+                <Link to="/dashboard/instructorhome">Dashboard</Link>
+              </li>
             </>
-        }
-       
+          ) : (
+            <>
+              <li>
+                <Link to="/dashboard/studenthome">Dashboard</Link>
+              </li>
+            </>
+          )}
+        </>
+      )}
+
+      {user ? (
+        <>
+          <li>
+            <button onClick={handleLogOut} className="">
+              Log Out
+            </button>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <ActiveLink className="" to="/login">
+              Login
+            </ActiveLink>
+          </li>
+        </>
+      )}
     </>
   );
 
   return (
     <>
-        <motion.div style={{ 
-        scaleX: scrollYProgress,
-        position:"fixed",
-        top:0,
-        right:0,
-        left:0,
-        height:4,
-        background:"#2094f3",
-        transformOrigin:"0%",
-        zIndex:999
-        }}>
-      </motion.div>
+      <motion.div
+        style={{
+          scaleX: scrollYProgress,
+          position: "fixed",
+          top: 0,
+          right: 0,
+          left: 0,
+          height: 4,
+          background: "#2094f3",
+          transformOrigin: "0%",
+          zIndex: 999,
+        }}
+      ></motion.div>
       <div className="navbar fixed z-10  max-w-screen-xl bg-black text-white px-8">
         <div className="navbar-start">
           <div className="dropdown">
@@ -101,20 +135,21 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1 text-lg">{navOptions}</ul>
         </div>
         <div className="navbar-end">
-        {
-              user && (
-                <div className="tooltip tooltip-bottom text-white" data-tip={user.displayName}>
-                  <p>
-                    <img 
-                      className="w-10 h-10 mr-3 rounded-full"
-                      referrerPolicy="no-referrer"
-                      src={user.photoURL}
-                      alt=""
-                    />
-                  </p>
-                </div>
-              )
-            }
+          {user && (
+            <div
+              className="tooltip tooltip-bottom text-white"
+              data-tip={user.displayName}
+            >
+              <p>
+                <img
+                  className="w-10 h-10 mr-3 rounded-full"
+                  referrerPolicy="no-referrer"
+                  src={user.photoURL}
+                  alt=""
+                />
+              </p>
+            </div>
+          )}
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
             <input

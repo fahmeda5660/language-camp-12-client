@@ -1,4 +1,3 @@
-
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
@@ -18,6 +17,9 @@ import SelectedClasses from "../pages/Dashboard/SelectedClasses/SelectedClasses"
 import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
 import Instructor from "../pages/Instructor/Instructor";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
+import InstructorHome from "../pages/Dashboard/InstructorHome/InstructorHome";
+import StudentHome from "../pages/Dashboard/StudentHome/StudentHome";
 
 export const router = createBrowserRouter([
   {
@@ -43,7 +45,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/secret",
-        element: <PrivateRoute><Secret /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Secret />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/instructor",
@@ -53,15 +59,23 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
-      // {
-      //   path: "selectedclasses",
-      //   element: <SelectedClasses></SelectedClasses>,
-      // },
+      {
+        path: "adminhome",
+        element: <AdminHome></AdminHome>,
+      },
       {
         path: "allusers",
-        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
       },
       {
         path: "addclasses",
@@ -73,18 +87,26 @@ export const router = createBrowserRouter([
       },
       // Instructor
       {
-        path: 'selectedclasses',
-        element: <SelectedClasses></SelectedClasses>
-    },
-    // Student
+        path: "selectedclasses",
+        element: <SelectedClasses></SelectedClasses>,
+      },
       {
-        path: 'myClass',
-        element: <MyClasses></MyClasses>
-    },
+        path: "instructorhome",
+        element: <InstructorHome></InstructorHome>,
+      },
+      // Student
       {
-        path: 'payment',
-        element: <Payment></Payment>
-    },
+        path: "myClass",
+        element: <MyClasses></MyClasses>,
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
+      },
+      {
+        path: "studenthome",
+        element: <StudentHome></StudentHome>,
+      },
     ],
   },
 ]);

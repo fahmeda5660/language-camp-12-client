@@ -5,13 +5,12 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 // import { useQuery } from "@tanstack/react-query";
 const AllUsers = () => {
-    const [axiosSecure]=useAxiosSecure();
+  const [axiosSecure] = useAxiosSecure();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");
     return res.data;
   });
   const handleMakeInstructor = (user) => {
-    
     fetch(`http://localhost:5000/users/instructor/${user._id}`, {
       method: "PATCH",
     })

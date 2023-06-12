@@ -1,5 +1,4 @@
-
-import "./PopularInstructor.css"
+import "./PopularInstructor.css";
 import PopularButton from "../../../components/PopularButton/PopularButton";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -7,20 +6,23 @@ import { useQuery } from "@tanstack/react-query";
 
 const PopularInstructor = () => {
   const [axiosSecure] = useAxiosSecure();
-  const { data: popularInstructors = [] } = useQuery(['popularInstructors'], async () => {
-      const res = await axiosSecure.get("/popularInstructor")
-      console.log("popularInstructors",res.data);
-      return res.data; 
-  })
-    return (
-        <div id="popularInstructor" className="px-8 mb-20">
+  const { data: popularInstructors = [] } = useQuery(
+    ["popularInstructors"],
+    async () => {
+      const res = await axiosSecure.get("/popularInstructor");
+      console.log("popularInstructors", res.data);
+      return res.data;
+    }
+  );
+  return (
+    <div id="popularInstructor" className="px-8 mb-20">
       <SectionTitle
         heading={"Popular"}
         heading1={"Instructors"}
         subHeading={"Most Students Choice"}
       ></SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-      {popularInstructors?.map((instructor) => (
+        {popularInstructors?.map((instructor) => (
           <div
             key={instructor._id}
             className="md:col-span-4 lg:col-span-4 col-span-1"
@@ -51,7 +53,7 @@ const PopularInstructor = () => {
         ))}
       </div>
     </div>
-    );
+  );
 };
 
 export default PopularInstructor;

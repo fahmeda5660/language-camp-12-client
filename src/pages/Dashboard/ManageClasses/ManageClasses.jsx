@@ -7,24 +7,26 @@ import axios from "axios";
 // import { useQuery } from "@tanstack/react-query";
 
 const ManageClasses = () => {
-  const [classes, ,refetch] = useClass();
+  const [classes, , refetch] = useClass();
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
-    const handleDeny = (id)=>{
-        axios.patch(`http://localhost:5000/classes/admin/deny/${id}`).then((res) => {
-      console.log(res.data);
-      if (res.data.modifiedCount) {
-        refetch();
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: `${id.name} is an Denied Now!`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
-    }
+  const handleDeny = (id) => {
+    axios
+      .patch(`http://localhost:5000/classes/admin/deny/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${id.name} is an Denied Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
   const handleApprove = (id) => {
     axios.patch(`http://localhost:5000/classes/admin/${id}`).then((res) => {
       console.log(res.data);
@@ -107,7 +109,10 @@ const ManageClasses = () => {
                       "Approved"
                     ) : (
                       <button
-                      disabled={singleClass.status == "approved" ||singleClass.status == "deny"}
+                        disabled={
+                          singleClass.status == "approved" ||
+                          singleClass.status == "deny"
+                        }
                         onClick={() => handleApprove(singleClass._id)}
                         className="btn btn-xs bg-[#2094f3] text-white hover:text-black"
                       >
@@ -118,7 +123,10 @@ const ManageClasses = () => {
                       "Deny"
                     ) : (
                       <button
-                      disabled={singleClass.status == "approved" ||singleClass.status == "deny"}
+                        disabled={
+                          singleClass.status == "approved" ||
+                          singleClass.status == "deny"
+                        }
                         onClick={() => handleDeny(singleClass._id)}
                         className="btn btn-xs bg-[#2094f3] text-white hover:text-black"
                       >
@@ -133,25 +141,30 @@ const ManageClasses = () => {
                     >
                       Deny
                     </button> */}
-                    {singleClass.status == "deny" || singleClass.status == "pending" ? (
+                    {singleClass.status == "deny" ||
+                    singleClass.status == "pending" ? (
                       <button
                         onClick={() => handleFeedback(singleClass._id)}
                         className="btn btn-xs bg-[#2094f3] text-white hover:text-black"
                       >
                         feedback
                       </button>
-                    ): ""}
+                    ) : (
+                      ""
+                    )}
                     {/* <button className="btn btn-xs bg-[#2094f3] text-white hover:text-black">
                       feedback
                     </button> */}
                   </div>
                 </td>
-                <td><button
-                      onClick={() => handleDelete(singleClass)}
-                      className="btn btn-xs bg-[#2094f3] text-white hover:text-black"
-                    >
-                      Delete
-                    </button></td>
+                <td>
+                  <button
+                    onClick={() => handleDelete(singleClass)}
+                    className="btn btn-xs bg-[#2094f3] text-white hover:text-black"
+                  >
+                    Delete
+                  </button>
+                </td>
                 <td>{singleClass.email}</td>
               </tr>
             ))}
