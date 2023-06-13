@@ -96,7 +96,7 @@ const Classes = () => {
             key={singleclass._id}
             className="md:col-span-4 lg:col-span-4 col-span-1"
           >
-            <div className={`card card-compact md:w-96 lg:w-96 w-full shadow-xl ${!singleclass.enrolled && "bg-red-100"}`}>
+            <div className={`card card-compact md:w-96 lg:w-96 w-full h-[600px] shadow-xl ${!singleclass.enrolled && "bg-red-100"}`}>
               <figure>
                 <img
                   className="w-full h-72"

@@ -19,6 +19,7 @@
   
   .galleryWrap .single img:hover {
     transform: scale(1.02);
+    transition-duration: 1000;
   }
   
 .sliderWrap {

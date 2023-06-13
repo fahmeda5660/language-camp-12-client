@@ -28,7 +28,7 @@ const PopularInstructor = () => {
             className="md:col-span-4 lg:col-span-4 col-span-1"
           >
             <div>
-              <div className="card card-compact md:w-96 lg:w-96 w-full bg-base-100 shadow-xl">
+              <div className="card card-compact md:w-96 lg:w-96 w-full h-[600px] bg-base-100 shadow-xl">
                 <figure>
                   <img
                     className="w-full h-72"
