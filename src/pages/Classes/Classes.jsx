@@ -26,12 +26,13 @@ const Classes = () => {
   });
   const handleAddToCart = (singleclass) => {
     if (user && user?.email) {
-      const { _id, className, instructor, image, price, seats } = singleclass;
+      const { _id, className, instructor, image, price, seats, email } = singleclass;
       const cartedClass = {
         classId: _id,
         className,
         instructor,
         email: user?.email,
+        instructorEmail: email,
         image,
         price,
         seats,

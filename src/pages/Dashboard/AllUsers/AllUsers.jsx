@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 // import { useQuery } from "@tanstack/react-query";
 const AllUsers = () => {
@@ -50,7 +51,12 @@ const AllUsers = () => {
   };
   return (
     <div className="w-full">
-      <p>Total users:{users.length}</p>
+      <SectionTitle
+        heading={"Manages"}
+        heading1={"Users"}
+        subHeading={"Admin Job"}
+      ></SectionTitle>
+      <p className="text-center my-2">Total users: <span className="text-[#2094f3]">{users.length}</span></p>
       <div className="overflow-x-auto w-full">
         <table className="table w-full ">
           {/* head */}

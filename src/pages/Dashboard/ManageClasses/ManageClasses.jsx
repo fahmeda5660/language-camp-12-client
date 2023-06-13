@@ -24,7 +24,7 @@ const ManageClasses = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `${id.name} is an Denied Now!`,
+            title: `Class is an Denied Now!`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -45,7 +45,7 @@ const ManageClasses = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `${id.name} is an Denied Now!`,
+            title: `Class is an Denied Now!`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -92,9 +92,9 @@ const ManageClasses = () => {
   return (
     <div className="w-full">
       <SectionTitle
-        heading={"Add"}
+        heading={"Manages"}
         heading1={"Class"}
-        subHeading={"Instructor Job"}
+        subHeading={"Admin Job"}
       ></SectionTitle>
       <div className="overflow-x-auto w-full">
         <table className="table w-full ">

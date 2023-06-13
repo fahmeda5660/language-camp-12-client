@@ -90,6 +90,7 @@ const CheckoutForm = ({ singleSelectedData }) => {
     //   classPrice: cart.map((classes) => classes.price),
     //   classStatus:"class pending",
     // };
+    console.log(singleSelectedData);
     const payment = {
       email: user?.email,
       transactionId: paymentIntent.id,
@@ -98,7 +99,7 @@ const CheckoutForm = ({ singleSelectedData }) => {
       date: new Date(),
       _id: singleSelectedData._id,
       ClassId: singleSelectedData.classId,
-      instructorEmail: singleSelectedData.email,
+      instructorEmail: singleSelectedData.instructorEmail,
       instructorName: singleSelectedData.instructor,
       status: 'service pending',
 

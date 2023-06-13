@@ -24,6 +24,7 @@ const EnrolledClass = () => {
               <th>#</th>
               <th>Classes Name</th>
               <th>Instructor Name</th>
+              <th>Instructor Email</th>
               <th>Price</th>
             </tr>
           </thead>
@@ -42,6 +43,7 @@ const EnrolledClass = () => {
                 <th>{index + 1}</th>
                 <td>{singlePaymentData.className}</td>
                 <td>{singlePaymentData.instructorName}</td>
+                <td>{singlePaymentData.instructorEmail}</td>
                 <td>{singlePaymentData.price}</td>
                 {/* <td>{singlePaymentData.className[0]}</td>
                 <td>{singlePaymentData.instructorName[0]}</td>

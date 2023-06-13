@@ -128,7 +128,7 @@ const AddClasses = () => {
             </label>
             <input
               type="number"
-              defaultValue="1001"
+              defaultValue="10"
               {...register("price", { required: true })}
               placeholder="Type here"
               className="input input-bordered w-full "
