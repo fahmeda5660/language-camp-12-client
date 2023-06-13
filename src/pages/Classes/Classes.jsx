@@ -19,11 +19,21 @@ const Classes = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { data: clesses = [], refetch } = useQuery(["classes"], async () => {
+  const { data: clesses = [] } = useQuery(["classes"], async () => {
     const res = await axiosSecure.get("/AllClasses");
     // console.log("allclaasesres",res.data);
     return res.data;
   });
+  // const { data: selectedClassData = [], refetch } = useQuery(
+  //   ["selectedClassData"],
+  //   async () => {
+  //     const res = await axiosSecure.get(`/carts?email=${user?.email}`);
+      
+  //     return res.data;
+  //   }
+  // );
+  // console.log("selectedClassData",selectedClassData);
+
   const handleAddToCart = (singleclass) => {
     if (user && user?.email) {
       const { _id, className, instructor, image, price, seats, email } = singleclass;
@@ -47,7 +57,7 @@ const Classes = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-            refetch(); // refetch cart to update the number of items in the cart
+            // refetch(); // refetch cart to update the number of items in the cart
             Swal.fire({
               position: "top-end",
               icon: "success",
@@ -86,7 +96,7 @@ const Classes = () => {
             key={singleclass._id}
             className="md:col-span-4 lg:col-span-4 col-span-1"
           >
-            <div className="card card-compact md:w-96 lg:w-96 w-full bg-base-100 shadow-xl">
+            <div className={`card card-compact md:w-96 lg:w-96 w-full shadow-xl ${!singleclass.enrolled && "bg-red-100"}`}>
               <figure>
                 <img
                   className="w-full h-72"
@@ -101,15 +111,17 @@ const Classes = () => {
                 <p className="text-xl">
                   Instructor Name:{singleclass.instructor}
                 </p>
-                <p className="text-xl">Available seats:{singleclass.seats}</p>
+                <p className="text-xl">Total Students:{singleclass?.enrolled}</p>
+                <p className="text-xl">Available seats:{singleclass.availableSeat}</p>
                 <p className="text-xl">Price:{singleclass.price}</p>
                 <div className="card-actions justify-end">
                   {
                     <button disabled={isAdmin || isInstructor} onClick={() => handleAddToCart(singleclass)}>
-                    <PopularButton isDisabled={isAdmin || isInstructor} buttonText={"Enroll Class"}></PopularButton>
+                    <PopularButton isDisabled={  isAdmin || isInstructor} buttonText={"Select Class"}></PopularButton>
                   </button>
                   }
                   {/* <PopularButton buttonText={"Enroll Class"}></PopularButton> */}
+                  {/* selectedClassData.findIndex(obj => obj.classId===singleclass._id)>=0|| */}
                 </div>
               </div>
             </div>

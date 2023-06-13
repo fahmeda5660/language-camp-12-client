@@ -57,7 +57,10 @@ const PopularClasses = () => {
                     Instructor Name: {singlePopularClasses.instructor}
                   </p>
                   <p className="text-xl">
-                    Available seats: {singlePopularClasses.seats}
+                    Total Enrolled: {singlePopularClasses.enrolled}
+                  </p>
+                  <p className="text-xl">
+                    Available seats: {singlePopularClasses.availableSeat}
                   </p>
                   <p className="text-xl">Price: {singlePopularClasses.price}</p>
                   <div className="card-actions justify-end">

@@ -3,13 +3,13 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
 const PaymentHistory = () => {
-    const [axiosSecure] = useAxiosSecure();
+  const [axiosSecure] = useAxiosSecure();
   const { data: payments = [] } = useQuery(["payments"], async () => {
     const res = await axiosSecure.get("/payments");
     return res.data;
   });
-    return (
-        <div className="w-full">
+  return (
+    <div className="w-full">
       <SectionTitle
         heading={"Payment"}
         heading1={"History"}
@@ -43,7 +43,9 @@ const PaymentHistory = () => {
             {payments?.map((singlePaymentData, index) => (
               <tr key={singlePaymentData.payments}>
                 <th>{index + 1}</th>
-                <td>{new Date(singlePaymentData.date).toLocaleDateString('en-US')}</td>
+                <td>
+                  {new Date(singlePaymentData.date).toLocaleDateString("en-US")}
+                </td>
                 <td>{singlePaymentData.transactionId}</td>
                 <td>{singlePaymentData.price}</td>
                 <td>{singlePaymentData.className}</td>
@@ -56,7 +58,7 @@ const PaymentHistory = () => {
         </table>
       </div>
     </div>
-    );
+  );
 };
 
 export default PaymentHistory;

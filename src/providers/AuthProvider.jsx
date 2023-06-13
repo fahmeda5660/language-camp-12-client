@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
-      console.log("Logged in observer......", loggedUser);
+      // console.log("Logged in observer......", loggedUser);
       setUser(loggedUser);
 
       // axios get ang set jwt token

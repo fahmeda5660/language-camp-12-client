@@ -17,11 +17,14 @@ const SelectedClasses = () => {
   const [, refetchCart] = useCart();
   // const [, , refetch] = useClass();
 
-  const { data: selectedClass = [],refetch } = useQuery(["selectedClass"], async () => {
-    const res = await axiosSecure.get(`/carts?email=${user?.email}`);
-    // console.log("selectedClass",res.data);
-    return res.data;
-  });
+  const { data: selectedClass = [], refetch } = useQuery(
+    ["selectedClass"],
+    async () => {
+      const res = await axiosSecure.get(`/carts?email=${user?.email}`);
+      // console.log("selectedClass",res.data);
+      return res.data;
+    }
+  );
   const handleDelete = (singleSelectedData) => {
     Swal.fire({
       title: "Are you sure?",
@@ -96,7 +99,10 @@ const SelectedClasses = () => {
                 <td>{singleSelectedData.instructor}</td>
                 <td>{singleSelectedData.price}</td>
                 <td>
-                  <Link to="/dashboard/payment" state={{singleSelectedData: singleSelectedData}}>
+                  <Link
+                    to="/dashboard/payment"
+                    state={{ singleSelectedData: singleSelectedData }}
+                  >
                     <button className="btn btn-xs bg-[#2094f3] text-white hover:text-black">
                       Pay
                     </button>

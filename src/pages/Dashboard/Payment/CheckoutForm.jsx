@@ -9,8 +9,8 @@ const CheckoutForm = ({ singleSelectedData }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
-  const [,refetchCart] = useCart();
-  const priceDecimal = (singleSelectedData.price)
+  const [, refetchCart] = useCart();
+  const priceDecimal = singleSelectedData.price;
   const price = parseInt(priceDecimal);
   console.log(price);
   // console.log(user.email);
@@ -67,12 +67,11 @@ const CheckoutForm = ({ singleSelectedData }) => {
       console.log(confirmError);
     }
     // console.log("payment intent", paymentIntent);
- 
+
     setProcessing(false);
 
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
-
     }
     // save payment information to the server
     // const payment = {
@@ -101,25 +100,23 @@ const CheckoutForm = ({ singleSelectedData }) => {
       ClassId: singleSelectedData.classId,
       instructorEmail: singleSelectedData.instructorEmail,
       instructorName: singleSelectedData.instructor,
-      status: 'service pending',
-
-  }
+      status: "service pending",
+    };
     // console.log(payment);
     // console.log(cart);
-    axiosSecure.post('/payments', payment)
-    .then(res => {
-        console.log(res.data);
-        if (res.data.insertResult.insertedId) {
-          refetchCart(); 
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Payment Done",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-    })
+    axiosSecure.post("/payments", payment).then((res) => {
+      console.log(res.data);
+      if (res.data.insertResult.insertedId) {
+        refetchCart();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Payment Done",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
   };
   return (
     <>
@@ -157,12 +154,5 @@ const CheckoutForm = ({ singleSelectedData }) => {
     </>
   );
 };
-// cartIds: cart.map((classes) => classes._id),
-//       classIds: cart.map((classes) => classes.classId),
-//       className: cart.map((classes) => classes.className),
-//       instructorName: cart.map((classes) => classes.instructor),
-//       instructorEmail: cart.map((classes) => classes.email),
-//       image: cart.map((classes) => classes.image),
-//       classPrice: cart.map((classes) => classes.price),
-//       classStatus:"class pending",
+
 export default CheckoutForm;

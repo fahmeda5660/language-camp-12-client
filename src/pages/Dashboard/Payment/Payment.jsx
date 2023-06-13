@@ -9,7 +9,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Payment = () => {
   // const [cart] = useCart();
   // console.log(cart);
-  
+
   const location = useLocation();
   const singleSelectedData = location.state?.singleSelectedData;
   // console.log(singleSelectedData);
@@ -23,7 +23,7 @@ const Payment = () => {
       ></SectionTitle>
 
       <Elements stripe={stripePromise}>
-        <CheckoutForm singleSelectedData={singleSelectedData} ></CheckoutForm>
+        <CheckoutForm singleSelectedData={singleSelectedData}></CheckoutForm>
       </Elements>
     </div>
   );

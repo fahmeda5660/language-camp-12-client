@@ -12,6 +12,7 @@ const MyClasses = () => {
     console.log(res.data);
     return res.data;
   });
+  console.log(myClasses);
   return (
     <div className="w-full">
       <SectionTitle
@@ -51,7 +52,7 @@ const MyClasses = () => {
                 <td>{SignleMyClasses.instructor}</td>
                 <td>{SignleMyClasses.status}</td>
                 <td>{SignleMyClasses.feedback}</td>
-                <td></td>
+                <td>{SignleMyClasses?.enrolled}</td>
                 <td>
                   <button className="btn btn-xs bg-[#2094f3] text-white hover:text-black">
                     Update

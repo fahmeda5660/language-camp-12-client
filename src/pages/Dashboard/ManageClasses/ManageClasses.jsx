@@ -9,6 +9,7 @@ import { useState } from "react";
 
 const ManageClasses = () => {
   const [classes, , refetch] = useClass();
+  // console.log(classes);
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const [id, setId] = useState();
