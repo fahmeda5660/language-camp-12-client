@@ -3,16 +3,17 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import { useLocation } from "react-router-dom";
-import useCart from "../../../hooks/useCart";
+// import { useLocation } from "react-router-dom";
+// import useCart from "../../../hooks/useCart";
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Payment = () => {
-  const [cart] = useCart();
+  // const [cart] = useCart();
   // console.log(cart);
   
   const location = useLocation();
-  const priceDecimal = location.state?.price;
-  const price = parseInt(priceDecimal);
-  console.log(price);
+  const singleSelectedData = location.state?.singleSelectedData;
+  // console.log(singleSelectedData);
+
   return (
     <div className="w-full">
       <SectionTitle
@@ -22,7 +23,7 @@ const Payment = () => {
       ></SectionTitle>
 
       <Elements stripe={stripePromise}>
-        <CheckoutForm price={price} cart={cart}></CheckoutForm>
+        <CheckoutForm singleSelectedData={singleSelectedData} ></CheckoutForm>
       </Elements>
     </div>
   );

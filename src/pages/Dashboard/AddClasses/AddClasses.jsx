@@ -142,7 +142,7 @@ const AddClasses = () => {
             </label>
             <input
               type="number"
-              defaultValue="101"
+              defaultValue="15"
               {...register("seats", { required: true })}
               placeholder="Type here"
               className="input input-bordered w-full "

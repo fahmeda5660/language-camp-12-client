@@ -5,11 +5,14 @@ import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useCart from "../../../hooks/useCart";
 
-const CheckoutForm = ({ price, cart }) => {
+const CheckoutForm = ({ singleSelectedData }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
   const [,refetchCart] = useCart();
+  const priceDecimal = (singleSelectedData.price)
+  const price = parseInt(priceDecimal);
+  console.log(price);
   // console.log(user.email);
   const [axiosSecure] = useAxiosSecure();
   const [cardError, setCardError] = useState("");
@@ -72,21 +75,36 @@ const CheckoutForm = ({ price, cart }) => {
 
     }
     // save payment information to the server
+    // const payment = {
+    //   email: user?.email,
+    //   transactionId: paymentIntent.id,
+    //   price,
+    //   date: new Date(),
+    //   quantity: cart.length,
+    //   cartIds: cart.,
+    //   classIds: cart.map((classes) => classes.classId),
+    //   className: cart.map((classes) => classes.className),
+    //   instructorName: cart.map((classes) => classes.instructor),
+    //   instructorEmail: cart.map((classes) => classes.email),
+    //   image: cart.map((classes) => classes.image),
+    //   classPrice: cart.map((classes) => classes.price),
+    //   classStatus:"class pending",
+    // };
     const payment = {
       email: user?.email,
       transactionId: paymentIntent.id,
       price,
+      className: singleSelectedData.className,
       date: new Date(),
-      quantity: cart.length,
-      cartIds: cart.map((classes) => classes._id),
-      classIds: cart.map((classes) => classes.classId),
-      className: cart.map((classes) => classes.className),
-      instructorName: cart.map((classes) => classes.instructor),
-      instructorEmail: cart.map((classes) => classes.email),
-      image: cart.map((classes) => classes.image),
-      classPrice: cart.map((classes) => classes.price),
-      classStatus:"class pending",
-    };
+      _id: singleSelectedData._id,
+      ClassId: singleSelectedData.classId,
+      instructorEmail: singleSelectedData.email,
+      instructorName: singleSelectedData.instructor,
+      status: 'service pending',
+
+  }
+    // console.log(payment);
+    // console.log(cart);
     axiosSecure.post('/payments', payment)
     .then(res => {
         console.log(res.data);
@@ -138,5 +156,12 @@ const CheckoutForm = ({ price, cart }) => {
     </>
   );
 };
-
+// cartIds: cart.map((classes) => classes._id),
+//       classIds: cart.map((classes) => classes.classId),
+//       className: cart.map((classes) => classes.className),
+//       instructorName: cart.map((classes) => classes.instructor),
+//       instructorEmail: cart.map((classes) => classes.email),
+//       image: cart.map((classes) => classes.image),
+//       classPrice: cart.map((classes) => classes.price),
+//       classStatus:"class pending",
 export default CheckoutForm;

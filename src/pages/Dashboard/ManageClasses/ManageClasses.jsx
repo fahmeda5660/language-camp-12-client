@@ -35,7 +35,7 @@ const ManageClasses = () => {
     axios
       .post(`http://localhost:5000/classes/admin/feedback/${id}`,{
         feedback:feedback
-        
+
       })
       .then((res) => {
         console.log(res.data);
@@ -60,7 +60,7 @@ const ManageClasses = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `${id.name} is an Approved Now!`,
+          title: `Class is an Approved Now!`,
           showConfirmButton: false,
           timer: 1500,
         });

@@ -6,6 +6,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useCart from "../../../hooks/useCart";
+// import useClass from "../../../hooks/useClass"
 // import { useEffect } from "react";
 // import { useState } from "react";
 // import useAuth from "../../../hooks/useAuth";
@@ -95,7 +96,7 @@ const SelectedClasses = () => {
                 <td>{singleSelectedData.instructor}</td>
                 <td>{singleSelectedData.price}</td>
                 <td>
-                  <Link to="/dashboard/payment" state={{price: singleSelectedData.price}}>
+                  <Link to="/dashboard/payment" state={{singleSelectedData: singleSelectedData}}>
                     <button className="btn btn-xs bg-[#2094f3] text-white hover:text-black">
                       Pay
                     </button>

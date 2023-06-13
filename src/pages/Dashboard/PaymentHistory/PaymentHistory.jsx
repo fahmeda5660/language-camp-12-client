@@ -1,20 +1,19 @@
-import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
-const EnrolledClass = () => {
-  const [axiosSecure] = useAxiosSecure();
-  const { data: payment = [] } = useQuery(["payment"], async () => {
+const PaymentHistory = () => {
+    const [axiosSecure] = useAxiosSecure();
+  const { data: payments = [] } = useQuery(["payments"], async () => {
     const res = await axiosSecure.get("/payments");
     return res.data;
   });
-  console.log(payment);
-  return (
-    <div className="w-full">
+    return (
+        <div className="w-full">
       <SectionTitle
-        heading={"Selected"}
-        heading1={"Class"}
-        subHeading={"My Class"}
+        heading={"Payment"}
+        heading1={"History"}
+        subHeading={"See Payment History"}
       ></SectionTitle>
       <div className="overflow-x-auto w-full">
         <table className="table w-full ">
@@ -22,9 +21,13 @@ const EnrolledClass = () => {
           <thead className=" text-white bg-[#2094f3]">
             <tr>
               <th>#</th>
-              <th>Classes Name</th>
-              <th>Instructor Name</th>
-              <th>Price</th>
+              <th>Date</th>
+              <th>Tx Id</th>
+              <th>Paid Amount</th>
+              <th>Class</th>
+              <th>Student Email</th>
+              <th>Instructor</th>
+              <th>Instructor Email</th>
             </tr>
           </thead>
           <tbody>
@@ -37,22 +40,23 @@ const EnrolledClass = () => {
                 <td>pay</td>
                 <td>Action</td>
               </tr> */}
-            {payment?.map((singlePaymentData, index) => (
-              <tr key={singlePaymentData._id}>
+            {payments?.map((singlePaymentData, index) => (
+              <tr key={singlePaymentData.payments}>
                 <th>{index + 1}</th>
-                <td>{singlePaymentData.className}</td>
-                <td>{singlePaymentData.instructorName}</td>
+                <td>{new Date(singlePaymentData.date).toLocaleDateString('en-US')}</td>
+                <td>{singlePaymentData.transactionId}</td>
                 <td>{singlePaymentData.price}</td>
-                {/* <td>{singlePaymentData.className[0]}</td>
-                <td>{singlePaymentData.instructorName[0]}</td>
-                <td>{singlePaymentData.price}</td> */}
+                <td>{singlePaymentData.className}</td>
+                <td>{singlePaymentData.email}</td>
+                <td>{singlePaymentData.instructorName}</td>
+                <td>{singlePaymentData.instructorEmail}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
     </div>
-  );
+    );
 };
 
-export default EnrolledClass;
+export default PaymentHistory;
