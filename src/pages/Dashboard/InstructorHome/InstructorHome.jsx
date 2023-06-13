@@ -2,7 +2,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const InstructorHome = () => {
   return (
-    <div>
+    <div className="w-full">
       <SectionTitle
         heading={"Welcome"}
         heading1={"Instructor Home"}

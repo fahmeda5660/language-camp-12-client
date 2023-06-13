@@ -7,6 +7,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import loginCover from "../../assets/footer/signin.png"
 
 const Login = () => {
   const {
@@ -42,11 +43,13 @@ const Login = () => {
   };
   return (
     <>
+    
       <Helmet>
         <title>VashaShikhon | Login</title>
       </Helmet>
       <div className="bg-gradient-to-r from-blue-200 pt-16">
-        <div className="container text-center pt-12 pb-20">
+      <img src={loginCover} className="w-full h-48" alt="" />
+        <div className="container text-center pb-20">
           <div className="bg-white shadow-lg border max-w-lg mx-auto pt-9 pb-12 px-12">
             <h1 className="text-black text-4xl font-bold mb-9">Please Login</h1>
             <form

@@ -42,7 +42,7 @@ const PopularInstructor = () => {
                   </h2>
                   <p className="text-xl">Class: {instructor.className}</p>
                   <p className="text-xl">Class: {instructor.price}</p>
-                  <p className="text-xl">Class: {instructor.seats}</p>
+                  <p className="text-xl">Seats: {instructor.seats}</p>
                   <div className="card-actions justify-end">
                     <PopularButton buttonText={"See Classes"}></PopularButton>
                   </div>

@@ -28,8 +28,9 @@ const MyClasses = () => {
               <th>Classes Name</th>
               <th>Instructor Name</th>
               <th>Status</th>
-              <th>Total Enrollment</th>
+              
               <th>Feedback</th>
+              <th>Total Enrollment</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -49,7 +50,7 @@ const MyClasses = () => {
                 <td>{SignleMyClasses.className}</td>
                 <td>{SignleMyClasses.instructor}</td>
                 <td>{SignleMyClasses.status}</td>
-                <td></td>
+                <td>{SignleMyClasses.feedback}</td>
                 <td></td>
                 <td>
                   <button className="btn btn-xs bg-[#2094f3] text-white hover:text-black">

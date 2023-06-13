@@ -12,7 +12,7 @@ import {
 import { app } from "../firebase/firebase.config";
 import axios from "axios";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
   const logOut = () => {
-    setLoading(true);
+    // setLoading(true);
     return signOut(auth);
   };
 
@@ -56,18 +56,20 @@ const AuthProvider = ({ children }) => {
           .post("http://localhost:5000/jwt", { email: loggedUser.email })
           .then((data) => {
             // console.log(data.data.token)
-            localStorage.setItem("access-token", data.data.token);
+            if(data.data){
+              localStorage.setItem("access-token", data?.data?.token);
             setLoading(false);
+            }
           });
       } else {
         localStorage.removeItem("access-token");
-        // setLoading(false);
+        setLoading(false);
       }
 
       setLoading(false);
     });
     return () => {
-      unsubscribe();
+      return unsubscribe();
     };
   }, []);
 

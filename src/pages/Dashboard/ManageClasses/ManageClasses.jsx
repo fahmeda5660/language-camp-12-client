@@ -4,12 +4,16 @@ import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import axios from "axios";
+import { useState } from "react";
 // import { useQuery } from "@tanstack/react-query";
 
 const ManageClasses = () => {
   const [classes, , refetch] = useClass();
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
+  const [id, setId] = useState();
+  const [feedback, setFeedback] = useState();
+  console.log(feedback);
   const handleDeny = (id) => {
     axios
       .patch(`http://localhost:5000/classes/admin/deny/${id}`)
@@ -27,6 +31,27 @@ const ManageClasses = () => {
         }
       });
   };
+  const handleFeedback = ()=>{
+    axios
+      .post(`http://localhost:5000/classes/admin/feedback/${id}`,{
+        feedback:feedback
+        
+      })
+      .then((res) => {
+        console.log(res.data);
+
+        if (res.data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${id.name} is an Denied Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  }
   const handleApprove = (id) => {
     axios.patch(`http://localhost:5000/classes/admin/${id}`).then((res) => {
       console.log(res.data);
@@ -144,7 +169,8 @@ const ManageClasses = () => {
                     {singleClass.status == "deny" ||
                     singleClass.status == "pending" ? (
                       <button
-                        onClick={() => handleFeedback(singleClass._id)}
+                        
+                        onClick={() => {window.my_modal_5.showModal();setId(singleClass._id)}}
                         className="btn btn-xs bg-[#2094f3] text-white hover:text-black"
                       >
                         feedback
@@ -170,6 +196,18 @@ const ManageClasses = () => {
             ))}
           </tbody>
         </table>
+        {/* Open the modal using ID.showModal() method */}
+       
+        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+          <form method="dialog" className="modal-box">
+            <h3 className="font-bold text-lg">Write FeedBack!</h3>
+            <textarea onChange={(e)=>setFeedback(e.target.value)} name="" id="" cols="40" rows="6"></textarea>
+            <div className="modal-action">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn" onClick={()=>handleFeedback(id)}>Send</button>
+            </div>
+          </form>
+        </dialog>
       </div>
     </div>
   );

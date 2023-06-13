@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
-
+import SignupCover from "../../assets/footer/signin.png";
 const SignUp = () => {
   const {
     register,
@@ -92,7 +92,8 @@ const SignUp = () => {
         <title>VashaShikhon | Sign Up</title>
       </Helmet>
       <div className="bg-gradient-to-r from-blue-200 pt-16">
-        <div className="container text-center pt-12 pb-20">
+      <img src={SignupCover} className="w-full h-48" alt="" />
+        <div className="container text-center pb-20">
           <div className="border max-w-lg mx-auto pt-9 pb-12 px-12 shadow-lg bg-white">
             <h1 className="text-black text-4xl font-bold mb-9">
               Please Register Here

@@ -91,7 +91,7 @@ const Dashboard = () => {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/dashboard/manageuser">
+                    <NavLink to="/dashboard/enrolledclass">
                       <FaMedrt></FaMedrt> Enrolled Class
                     </NavLink>
                   </li>

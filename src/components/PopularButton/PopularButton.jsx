@@ -1,10 +1,10 @@
 import { FaArrowRight } from "react-icons/fa";
 import "./PopularButton.css"
 
-const PopularButton = ({buttonText}) => {
+const PopularButton = ({buttonText, isDisabled}) => {
     return (
         <div>
-           <button className="btnClass btn4 rounded-lg text-xl mt-2">{buttonText}<span className="ml-2"><FaArrowRight></FaArrowRight></span></button> 
+           <button disabled={isDisabled} className="btnClass btn4 rounded-lg text-xl mt-2">{buttonText}<span className="ml-2"><FaArrowRight></FaArrowRight></span></button> 
         </div>
     );
 };

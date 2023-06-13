@@ -13,9 +13,10 @@ import useCart from "../../../hooks/useCart";
 const SelectedClasses = () => {
   const { user } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
-  const [, refetch] = useCart();
+  const [, refetchCart] = useCart();
+  // const [, , refetch] = useClass();
 
-  const { data: selectedClass = [] } = useQuery(["selectedClass"], async () => {
+  const { data: selectedClass = [],refetch } = useQuery(["selectedClass"], async () => {
     const res = await axiosSecure.get(`/carts?email=${user?.email}`);
     // console.log("selectedClass",res.data);
     return res.data;
@@ -35,6 +36,7 @@ const SelectedClasses = () => {
           console.log("deleted res", res.data);
           if (res.data.deletedCount > 0) {
             refetch();
+            refetchCart();
             Swal.fire("Deleted!", "Your file has been deleted.", "success");
           }
         });
@@ -93,7 +95,7 @@ const SelectedClasses = () => {
                 <td>{singleSelectedData.instructor}</td>
                 <td>{singleSelectedData.price}</td>
                 <td>
-                  <Link to="/dashboard/payment">
+                  <Link to="/dashboard/payment" state={{price: singleSelectedData.price}}>
                     <button className="btn btn-xs bg-[#2094f3] text-white hover:text-black">
                       Pay
                     </button>

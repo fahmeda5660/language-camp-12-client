@@ -7,11 +7,14 @@ import { useQuery } from "@tanstack/react-query";
 import PopularButton from "../../components/PopularButton/PopularButton";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const Classes = () => {
   const { user } = useContext(AuthContext);
-  // const [, refetch] useCart();
   const [axiosSecure] = useAxiosSecure();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -100,9 +103,11 @@ const Classes = () => {
                 <p className="text-xl">Available seats:{singleclass.seats}</p>
                 <p className="text-xl">Price:{singleclass.price}</p>
                 <div className="card-actions justify-end">
-                  <button onClick={() => handleAddToCart(singleclass)}>
-                    <PopularButton buttonText={"Enroll Class"}></PopularButton>
+                  {
+                    <button disabled={isAdmin || isInstructor} onClick={() => handleAddToCart(singleclass)}>
+                    <PopularButton isDisabled={isAdmin || isInstructor} buttonText={"Enroll Class"}></PopularButton>
                   </button>
+                  }
                   {/* <PopularButton buttonText={"Enroll Class"}></PopularButton> */}
                 </div>
               </div>
