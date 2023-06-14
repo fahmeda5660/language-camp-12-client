@@ -22,14 +22,22 @@ const Classes = () => {
     // console.log("allclaasesres",res.data);
     return res.data;
   });
-  const { data: selectedClassData = [] } = useQuery(
-    ["selectedClassData"],
-    async () => {
+  const {data: selectedClassData = [], refetch}=useQuery({
+    queryKey: ['selectedClassData'],
+    enabled:!!user?.email,
+    queryFn: async()=>{
       const res = await axiosSecure.get(`/carts?email=${user?.email}`);
-      
       return res.data;
     }
-  );
+})
+  // const { data: selectedClassData = [] } = useQuery(
+  //   ["selectedClassData"], 
+  //   async () => {
+  //     const res = await axiosSecure.get(`/carts?email=${user?.email}`);
+      
+  //     return res.data;
+  //   }
+  // );
   // console.log("selectedClassData",selectedClassData);
 
   const handleAddToCart = (singleclass) => {
@@ -55,7 +63,7 @@ const Classes = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-            // refetch(); // refetch cart to update the number of items in the cart
+            refetch(); // refetch cart to update the number of items in the cart
             Swal.fire({
               position: "top-end",
               icon: "success",
@@ -114,8 +122,8 @@ const Classes = () => {
                 <p className="text-xl">Price:{singleclass.price}</p>
                 <div className="card-actions justify-end">
                   {
-                    <button disabled={isAdmin || isInstructor} onClick={() => handleAddToCart(singleclass)}>
-                    <PopularButton isDisabled={ selectedClassData.findIndex(obj => obj.classId===singleclass._id)>=0|| isAdmin || isInstructor} buttonText={"Select Class"}></PopularButton>
+                    <button disabled={isAdmin || isInstructor || !singleclass.enrolled} onClick={() => handleAddToCart(singleclass)}>
+                    <PopularButton isDisabled={ selectedClassData.findIndex(obj => obj.classId===singleclass._id)>=0|| isAdmin || isInstructor || !singleclass.enrolled} buttonText={"Select Class"}></PopularButton>
                   </button>
                   }
                   {/* <PopularButton buttonText={"Enroll Class"}></PopularButton> */}
