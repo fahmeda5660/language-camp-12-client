@@ -17,7 +17,7 @@ const ManageClasses = () => {
   console.log(feedback);
   const handleDeny = (id) => {
     axios
-      .patch(`http://localhost:5000/classes/admin/deny/${id}`)
+      .patch(`https://language-camps-server.vercel.app/classes/admin/deny/${id}`)
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount) {
@@ -34,7 +34,7 @@ const ManageClasses = () => {
   };
   const handleFeedback = ()=>{
     axios
-      .post(`http://localhost:5000/classes/admin/feedback/${id}`,{
+      .post(`https://language-camps-server.vercel.app/classes/admin/feedback/${id}`,{
         feedback:feedback
 
       })
@@ -54,7 +54,7 @@ const ManageClasses = () => {
       });
   }
   const handleApprove = (id) => {
-    axios.patch(`http://localhost:5000/classes/admin/${id}`).then((res) => {
+    axios.patch(`https://language-camps-server.vercel.app/classes/admin/${id}`).then((res) => {
       console.log(res.data);
       if (res.data.modifiedCount) {
         refetch();

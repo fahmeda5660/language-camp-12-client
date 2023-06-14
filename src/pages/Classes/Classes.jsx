@@ -30,15 +30,6 @@ const Classes = () => {
       return res.data;
     }
 })
-  // const { data: selectedClassData = [] } = useQuery(
-  //   ["selectedClassData"], 
-  //   async () => {
-  //     const res = await axiosSecure.get(`/carts?email=${user?.email}`);
-      
-  //     return res.data;
-  //   }
-  // );
-  // console.log("selectedClassData",selectedClassData);
 
   const handleAddToCart = (singleclass) => {
     if (user && user?.email) {
@@ -53,7 +44,7 @@ const Classes = () => {
         price,
         seats,
       };
-      fetch("http://localhost:5000/carts", {
+      fetch("https://language-camps-server.vercel.app/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",

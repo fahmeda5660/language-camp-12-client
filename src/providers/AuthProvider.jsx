@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
       // axios get ang set jwt token
       if (loggedUser) {
         axios
-          .post("http://localhost:5000/jwt", { email: loggedUser.email })
+          .post("https://language-camps-server.vercel.app/jwt", { email: loggedUser.email })
           .then((data) => {
             // console.log(data.data.token)
             if(data.data){
