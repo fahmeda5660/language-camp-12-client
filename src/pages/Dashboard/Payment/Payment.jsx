@@ -12,7 +12,7 @@ const Payment = () => {
 
   const location = useLocation();
   const singleSelectedData = location.state?.singleSelectedData;
-  // console.log(singleSelectedData);
+  console.log(singleSelectedData);
 
   return (
     <div className="w-full">

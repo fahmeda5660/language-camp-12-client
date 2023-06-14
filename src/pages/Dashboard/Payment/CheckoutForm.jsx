@@ -13,7 +13,7 @@ const CheckoutForm = ({ singleSelectedData }) => {
   const priceDecimal = singleSelectedData.price;
   const price = parseInt(priceDecimal);
   console.log(price);
-  // console.log(user.email);
+  // console.log(singleSelectedData);
   const [axiosSecure] = useAxiosSecure();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");

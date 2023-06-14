@@ -28,10 +28,10 @@ const PopularInstructor = () => {
             className="md:col-span-4 lg:col-span-4 col-span-1"
           >
             <div>
-              <div className="card card-compact md:w-96 lg:w-96 w-full h-[600px] bg-base-100 shadow-xl">
+              <div className="card card-compact md:w-96 lg:w-96 w-full h-[500px] bg-base-100 shadow-xl">
                 <figure>
                   <img
-                    className="w-full h-72"
+                    className="w-full h-56"
                     src={instructor.image}
                     alt="Class Photo"
                   />
@@ -40,10 +40,8 @@ const PopularInstructor = () => {
                   <h2 className="card-title text-2xl">
                     Instructor Name: {instructor.instructor}
                   </h2>
+                  <p className="text-xl">Instructor Email: {instructor.instructorEmail}</p>
                   <p className="text-xl">Class: {instructor.className}</p>
-                  <p className="text-xl">Class: {instructor.instructorEmail}</p>
-                  <p className="text-xl">Price: {instructor.price}</p>
-                  <p className="text-xl">Seats: {instructor.availableSeat}</p>
                   <div className="card-actions justify-end">
                     <PopularButton buttonText={"See Classes"}></PopularButton>
                   </div>

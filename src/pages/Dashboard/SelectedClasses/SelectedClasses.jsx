@@ -21,7 +21,7 @@ const SelectedClasses = () => {
     ["selectedClass"],
     async () => {
       const res = await axiosSecure.get(`/carts?email=${user?.email}`);
-      // console.log("selectedClass",res.data);
+      console.log("selectedClass",res.data);
       return res.data;
     }
   );
