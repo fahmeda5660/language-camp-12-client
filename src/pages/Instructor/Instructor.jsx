@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import PopularButton from "../../components/PopularButton/PopularButton";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import useAuth from "../../hooks/useAuth";
+// import useAuth from "../../hooks/useAuth";
 
 const Instructor = () => {
   // const {user} = useAuth();
@@ -39,6 +39,7 @@ const Instructor = () => {
                     Instructor Name: {instructor.instructor}
                   </h2>
                   <p className="text-xl">Email: {instructor.instructorEmail}</p>
+                  <p className="text-xl">Class Name: {instructor.className}</p>
                   <div className="card-actions justify-end">
                     <PopularButton buttonText={"See Classes"}></PopularButton>
                   </div>
