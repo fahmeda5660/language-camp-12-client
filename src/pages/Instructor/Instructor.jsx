@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import PopularButton from "../../components/PopularButton/PopularButton";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
 
 const Instructor = () => {
+  // const {user} = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const { data: instructors = [] } = useQuery(["instructors"], async () => {
     const res = await axiosSecure.get("/instructor");
@@ -13,7 +15,7 @@ const Instructor = () => {
   return (
     <div id="popularInstructor" className="px-8 mb-20 pt-16">
       <SectionTitle
-        heading={"Popular"}
+        heading={"All"}
         heading1={"Instructors"}
         subHeading={"Most Students Choice"}
       ></SectionTitle>
@@ -36,7 +38,7 @@ const Instructor = () => {
                   <h2 className="card-title text-2xl">
                     Instructor Name: {instructor.instructor}
                   </h2>
-                  <p className="text-xl">Email: {instructor.email}</p>
+                  <p className="text-xl">Email: {instructor.instructorEmail}</p>
                   <div className="card-actions justify-end">
                     <PopularButton buttonText={"See Classes"}></PopularButton>
                   </div>

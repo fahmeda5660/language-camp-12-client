@@ -1,7 +1,4 @@
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
-import "./Classes.css";
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import PopularButton from "../../components/PopularButton/PopularButton";
@@ -9,9 +6,10 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
+import useAuth from "../../hooks/useAuth";
 
 const Classes = () => {
-  const { user } = useContext(AuthContext);
+ const {user} = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
@@ -24,14 +22,14 @@ const Classes = () => {
     // console.log("allclaasesres",res.data);
     return res.data;
   });
-  // const { data: selectedClassData = [], refetch } = useQuery(
-  //   ["selectedClassData"],
-  //   async () => {
-  //     const res = await axiosSecure.get(`/carts?email=${user?.email}`);
+  const { data: selectedClassData = [] } = useQuery(
+    ["selectedClassData"],
+    async () => {
+      const res = await axiosSecure.get(`/carts?email=${user?.email}`);
       
-  //     return res.data;
-  //   }
-  // );
+      return res.data;
+    }
+  );
   // console.log("selectedClassData",selectedClassData);
 
   const handleAddToCart = (singleclass) => {
@@ -117,7 +115,7 @@ const Classes = () => {
                 <div className="card-actions justify-end">
                   {
                     <button disabled={isAdmin || isInstructor} onClick={() => handleAddToCart(singleclass)}>
-                    <PopularButton isDisabled={  isAdmin || isInstructor} buttonText={"Select Class"}></PopularButton>
+                    <PopularButton isDisabled={ selectedClassData.findIndex(obj => obj.classId===singleclass._id)>=0|| isAdmin || isInstructor} buttonText={"Select Class"}></PopularButton>
                   </button>
                   }
                   {/* <PopularButton buttonText={"Enroll Class"}></PopularButton> */}

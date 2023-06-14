@@ -3,9 +3,11 @@ import "./PopularClasses.css";
 import PopularButton from "../../../components/PopularButton/PopularButton";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+
 const PopularClasses = () => {
+  
   const [axiosSecure] = useAxiosSecure();
-  const { data: popularClass = [] } = useQuery(["popularClass"], async () => {
+  const { data: popularClass = [], refetch } = useQuery(["popularClass"], async () => {
     const res = await axiosSecure.get("/popularClasses");
     // console.log("popularClass",res.data);
     return res.data;

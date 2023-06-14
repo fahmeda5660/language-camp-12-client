@@ -85,7 +85,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "manageclasses",
-        element: <ManageClasses></ManageClasses>,
+        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>,
       },
       // Instructor
       {
