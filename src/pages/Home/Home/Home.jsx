@@ -6,6 +6,9 @@ import Rocket from "../Rocket/Rocket";
 import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstructor from "../PopularInstructor/PopularInstructor";
 import Gallery from "../Gallery/Gallery";
+import Quote from "../Quote/Quote";
+import WhyUs from "../WhyUs/WhyUs";
+import Languages from "../Languages/Languages";
 
 const Home = () => {
   const galleryImages = [
@@ -43,6 +46,9 @@ const Home = () => {
         <title>VashaShikhon | Home</title>
       </Helmet>
       <Banner></Banner>
+      {/* <Quote></Quote> */}
+      <Languages></Languages>
+      <WhyUs></WhyUs>
       <PopularClasses></PopularClasses>
       <PopularInstructor></PopularInstructor>
       <Gallery galleryImages={galleryImages}></Gallery>
