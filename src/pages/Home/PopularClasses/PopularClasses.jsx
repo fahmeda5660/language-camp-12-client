@@ -8,11 +8,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useAdmin from "../../../hooks/useAdmin";
 import useInstructor from "../../../hooks/useInstructor";
+import { FaFacebook, FaLink, FaLinkedin, FaMailchimp, FaTwitter } from "react-icons/fa";
 
 const PopularClasses = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const {user} = useAuth();
+  const { user } = useAuth();
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
   const [axiosSecure] = useAxiosSecure();
@@ -21,14 +22,14 @@ const PopularClasses = () => {
     // console.log("popularClass",res.data);
     return res.data;
   });
-  const {data: selectedClassData = [], refetch}=useQuery({
+  const { data: selectedClassData = [], refetch } = useQuery({
     queryKey: ['selectedClassData'],
-    enabled:!!user?.email,
-    queryFn: async()=>{
+    enabled: !!user?.email,
+    queryFn: async () => {
       const res = await axiosSecure.get(`/carts?email=${user?.email}`);
       return res.data;
     }
-})
+  })
   const handleAddToCart = (singleclass) => {
     if (user && user?.email) {
       const { _id, className, instructor, image, price, seats, email } = singleclass;
@@ -109,13 +110,19 @@ const PopularClasses = () => {
             className="md:col-span-4 lg:col-span-4 col-span-1"
           >
             <div>
-              <div className="card card-compact md:w-96 lg:w-96 w-full h-[600px] bg-base-100 shadow-xl">
-                <figure>
+              <div className="card card-compact md:w-96 lg:w-96 w-full h-[600px] bg-base-100 shadow-xl image_wrapper">
+                <figure className="relative">
                   <img
                     className="w-full h-72"
                     src={singlePopularClasses.image}
                     alt="Class Photo"
                   />
+                  <div className="overlay overlay_5">
+                    {/* <p>Learn More</p> */}
+                    <a href="#" class="icon1">
+                      <FaLink></FaLink>
+                    </a>
+                    </div>
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title text-2xl">
@@ -132,9 +139,9 @@ const PopularClasses = () => {
                   </p>
                   <p className="text-xl">Price: {singlePopularClasses.price}</p>
                   <div className="card-actions justify-end">
-                  <button disabled={isAdmin || isInstructor }  onClick={() => handleAddToCart(singlePopularClasses)}>
-                    <PopularButton isDisabled={ selectedClassData.findIndex(obj => obj.classId===singlePopularClasses._id)>=0|| isAdmin || isInstructor } buttonText={"Select Class"}></PopularButton>
-                  </button>
+                    <button disabled={isAdmin || isInstructor} onClick={() => handleAddToCart(singlePopularClasses)}>
+                      <PopularButton isDisabled={selectedClassData.findIndex(obj => obj.classId === singlePopularClasses._id) >= 0 || isAdmin || isInstructor} buttonText={"Select Class"}></PopularButton>
+                    </button>
                     {/* <PopularButton  buttonText={"Enroll Class"}></PopularButton> */}
                   </div>
                 </div>
