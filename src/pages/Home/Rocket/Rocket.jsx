@@ -1,7 +1,7 @@
 import rocketImg from "../../../assets/footer/footer-rocket.svg";
 const Rocket = () => {
   return (
-    <div>
+    <div className="container mx-auto">
       <div className="md:flex lg:flex justify-center items-center gap-4 px-8">
         <p className="text-3xl font-semibold text-center">
           <span className="text-[#2094f3] font-extrabold ">
@@ -13,7 +13,7 @@ const Rocket = () => {
           Enroll Now
         </button>
       </div>
-      <img className="mt-6" src={rocketImg} alt="" />
+      <img className="mt-6 w-full" src={rocketImg} alt="" />
     </div>
   );
 };

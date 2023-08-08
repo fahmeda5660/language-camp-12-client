@@ -26,7 +26,7 @@ const Languages = () => {
     // }, [])
 
     return (
-        <div className="container p-8 mt-[-40px] bg-[#6eb8f5]">
+        <div className="container mx-auto p-8 mt-[-40px] bg-[#6eb8f5]">
             <p className="text-white mb-2 text-xl text-center font-['Great_Vibes']"> _____Choose Language_____</p>
             <Marquee className="text-danger" speed={100}>
                 <div className="card w-24">

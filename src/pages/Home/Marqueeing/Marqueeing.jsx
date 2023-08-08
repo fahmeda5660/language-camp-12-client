@@ -9,7 +9,7 @@ import marqueeImg7 from "../../../assets/bottom-slider/a7_v2.svg";
 import marqueeImg8 from "../../../assets/bottom-slider/a8_v2.svg";
 const Marqueeing = () => {
   return (
-    <div className="container my-8 px-8">
+    <div className="container mx-auto my-8 px-8">
       <Marquee className="text-danger" speed={100}>
         <div className="card w-56">
           <figure className="px-4 pt-4">

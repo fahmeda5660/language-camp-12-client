@@ -16,7 +16,7 @@ const PopularInstructor = () => {
     }
   );
   return (
-    <div id="popularInstructor" className="px-8 mb-20">
+    <div id="popularInstructor" className="container mx-auto px-8 mb-20">
       <SectionTitle
         heading={"Popular"}
         heading1={"Instructors"}
@@ -50,11 +50,11 @@ const PopularInstructor = () => {
                     </div>
                     </div>
                 </figure>
-                <div className="card-body">
+                <div className="card-body break-words">
                   <h2 className="card-title text-2xl">
                     Instructor Name: {instructor.instructor}
                   </h2>
-                  <p className="text-xl">Instructor Email: {instructor.instructorEmail}</p>
+                  <p className="text-xl ">Instructor Email: {instructor.instructorEmail}</p>
                   <p className="text-xl">Class: {instructor.className}</p>
                   <div className="card-actions justify-end">
                     <PopularButton buttonText={"See Classes"}></PopularButton>

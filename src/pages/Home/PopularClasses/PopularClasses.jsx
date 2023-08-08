@@ -80,7 +80,7 @@ const PopularClasses = () => {
   };
 
   return (
-    <div id="popularClass" className="px-8 mb-20">
+    <div id="popularClass" className="container mx-auto px-8 mb-20">
       <SectionTitle
         heading={"Popular"}
         heading1={"Classes"}
