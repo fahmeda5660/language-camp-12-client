@@ -29,7 +29,7 @@ const PopularInstructor = () => {
             className="md:col-span-4 lg:col-span-4 col-span-1"
           >
             <div>
-              <div className="card card-compact md:w-96 lg:w-96 w-full h-[500px] bg-base-100 shadow-xl image_wrapper">
+              <div className="card card-compact md:w-96 lg:w-96 w-full h-[600px] bg-base-100 shadow-xl image_wrapper">
                 <figure className="relative">
                   <img
                     className="w-full h-56"
