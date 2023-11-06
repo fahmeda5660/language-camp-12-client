@@ -13,31 +13,31 @@ import Languages from "../Languages/Languages";
 const Home = () => {
   const galleryImages = [
     {
-      img: 'https://i.ibb.co/s6v9g9h/10.png'
+      img: 'https://i.ibb.co/pXsHrzc/10.png'
     },
     {
-      img: "https://i.ibb.co/M8jBHGh/2.png"
+      img: "https://i.ibb.co/23KNTZW/2.png"
     },
     {
-      img: "https://i.ibb.co/Qd0xGzb/3.png"
+      img: "https://i.ibb.co/w0nCBLq/3.png"
     },
     {
-      img: "https://i.ibb.co/rpT6FK9/4.png"
+      img: "https://i.ibb.co/jznwyTH/4.png"
     },
     {
-      img: "https://i.ibb.co/bgMYX7r/5.png"
+      img: "https://i.ibb.co/Fg15YTF/5.png"
     },
     {
-      img: "https://i.ibb.co/rbk2HBK/6.png"
+      img: "https://i.ibb.co/y4t0KFs/6.png"
     },
     {
-      img: "https://i.ibb.co/hWKxXNb/7.png"
+      img: "https://i.ibb.co/jH1KmPn/7.png"
     },
     {
-      img: "https://i.ibb.co/JHXGr5J/8.png"
+      img: "https://i.ibb.co/TmzSkSM/8.png"
     },
     {
-      img: "https://i.ibb.co/jhby4dd/9.png"
+      img: "https://i.ibb.co/tC9fbdg/9.png"
     }
   ]
   return (
